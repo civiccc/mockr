@@ -1,0 +1,30 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: mockr_development
+  username: root
+  password:
+  host: localhost
+
+development_postgres:
+  adapter: postgresql
+  encoding: utf8
+  database: mockr_development
+  username: jimmy
+  password:
+
+test:
+  adapter: mysql
+  encoding: utf8
+  database: mockr_test
+  username: root
+  password:
+  host: localhost
+
+production:
+  adapter: mysql
+  encoding: utf8
+  database: mockr_production
+  username: root
+  password:
+  host: localhost

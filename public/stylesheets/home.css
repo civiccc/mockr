@@ -1,0 +1,27 @@
+h2 {
+  color: #eee;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+}
+#primary_col {
+  float: left;
+  width: 600px;
+}
+#secondary_col {
+  float: right;
+  width: 230px;
+}
+#secondary_col h2 {
+  border-bottom: 1px solid #444;
+  font-size: 13px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+}
+#secondary_col .project_list {
+  font-size: 12px;
+  margin-bottom: 32px;
+}
+#secondary_col .project_list li {
+  padding-bottom: 8px;
+}

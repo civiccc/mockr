@@ -1,0 +1,50 @@
+<%= stylesheet_link_tag "settings/users" %>
+
+<%= render :partial => "/shared/subnav",
+           :locals => {
+             :header => "Settings",
+             :links => [["Users", users_path], ["Email", email_settings_path]]
+           } %>
+
+<div id="container">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Facebook UID</th>
+      <th>Email</th>
+      <th></th>
+    </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%=h user.name %>
+        </td>
+        <td>
+          <%=h user.facebook_uid %>
+        </td>
+        <td>
+          <%= user.email %>
+        </td>
+        <td class="actions">
+          <%= link_to "Edit", edit_user_path(user) %>
+          <% if viewer != user %>
+            <span class="divider">|</span> <%= link_to "Remove",
+              user_path(user, :user => {:active => :false}), :method => :put %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <fb:serverfbml>
+    <script type="text/fbml">
+    <div style="background: #2d2d2d; padding-bottom: 200px;">
+      <fb:fbml>
+        <% form_tag users_url, :target => "_top" do %>
+          <fb:friend-selector border-color="#000"></fb:friend-selector>
+          <%= submit_tag "Add" %>
+        <% end %>
+      </fb:fbml>
+    </div>
+    </script>
+  </fb:serverfbml>
+</div>

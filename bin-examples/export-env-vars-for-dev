@@ -1,0 +1,8 @@
+export \
+  INSTANCE_NAME=mockr-dev \
+  APP_HOST=example.com \
+  GMAIL_SMTP_USER=username@gmail.com \
+  GMAIL_SMTP_PASSWORD='password' \
+  AWS_S3_ACCESS_KEY_ID=XXX \
+  AWS_S3_SECRET_ACCESS_KEY=XXX \
+

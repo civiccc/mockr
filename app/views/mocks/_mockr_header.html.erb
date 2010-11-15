@@ -1,0 +1,40 @@
+<div class="clearfix" id="header">
+  <h1><%= link_to image_tag("logo-new.png"), "/", :id => "logo" %></h1>
+  <ul class="mock_nav">
+    <li>
+      <% if @mock.prev %>
+        <%= link_to "Prev", mock_path(@mock.prev), :id => "prev_link" %>
+      <% else %>
+        <%= link_to_function "Prev", :class => "none" %>
+      <% end %>
+    </li>
+    <li class="next">
+      <% if @mock.next %>
+        <%= link_to "Next", mock_path(@mock.next), :id => "next_link" %>
+      <% else %>
+        <%= link_to_function "Next", "", :class => "none" %>
+      <% end %>
+    </li>
+  </ul>
+  <ul class="mock_actions">
+    <li>
+      <%= link_to "Email", edit_mock_path(@mock),
+        :class => "button" %>
+    </li>
+    <li>
+      <%= link_to "Download", image_path(@mock.image.url),
+        :class => "button" %>
+    </li>
+    <li>
+      <%= link_to "Add Next Version",
+        new_mock_path(:mock_list_id => @mock.mock_list_id),
+        :class => "button" %>
+    </li>
+  </ul>
+  <h2>
+    <%= link_to @mock.project.title, project_path(@mock.project) %>
+    <span class="mock_title">
+      <%= @mock.title %>
+    </span>
+  </h2>
+</div>

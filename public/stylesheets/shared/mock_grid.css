@@ -1,0 +1,40 @@
+.mock_grid {
+  margin: 0 -25px 0 0;
+  text-align: left;
+}
+.mock_grid img {
+  background: #444;
+  display: block;
+  margin: 0 auto;
+}
+.mock_grid .fresh .text {
+  background-image: url(../../images/dot.png);
+  background-position: 135px 4px;
+  background-repeat: no-repeat;
+  padding-right: 18px;
+}
+.mock_grid li {
+  float: left;
+  margin: 0 20px 14px 0;
+  padding: 5px 5px 5px 0;
+  width: 150px;
+}
+.mock_grid a {
+  line-height: 18px;
+}
+.mock_grid .meta {
+  color: #555;
+  font-size: 10px;
+  line-height: 14px;
+  margin-top: 2px;
+}
+.mock_grid .meta a {
+  line-height: 13px;
+}
+.mock_grid .preview_container {
+  height: 150px;
+  margin-bottom: 10px;
+  width: 150px;
+  -moz-box-shadow: 0 2px 2px #000;
+  -webkit-box-shadow: 0 2px 2px #000;
+}

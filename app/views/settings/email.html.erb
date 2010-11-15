@@ -1,0 +1,21 @@
+<% @title = "Settings" %>
+
+<%= stylesheet_link_tag "settings/email" %>
+
+<%= render :partial => "/shared/subnav",
+           :locals => {
+             :header => "Settings",
+             :links => [["Users", users_path], ["Email", email_settings_path]]
+           } %>
+
+<div id="tabbed_content">
+  <% form_for :setting, @setting, :url => setting_path(@setting),
+    :html => {:method => :put} do |f| %>
+    <%= f.hidden_field :key %>
+    <%= f.label :value, "Deliver group email notifications to:" %>
+    <div class="field_row">
+      <%= f.text_field :value %>
+      <%= f.submit "Save" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,8 @@
+log/*
+db/schema.rb
+*.sw?
+*~
+tmtags
+public/mocks
+config/facebook.yml
+bin/*

@@ -1,0 +1,67 @@
+<% @title = @project.title %>
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag "shared/mock_grid", "projects/show" %>
+  <%= javascript_include_tag "plugins/jquery.inlineeditor.js",
+    "projects/show" %>
+<% end %>
+
+<div id="project_header">
+  <h1>
+    <%= link_to "+ Add Mock to Project",
+      new_mock_path(:project_id => @project.id), :class => "add_link rounded" %>
+    <span class="editable">
+      <%= @project.title %>
+    </span>
+    <% form_for :project, @project, :url => project_path(@project),
+      :html => {:method => :put} do |f| %>
+      <%= hidden_field_tag :inline, 1 %>
+      <%= f.text_field :title %>
+      <%= f.submit "Save" %> or
+      <%= link_to_function "Cancel", "", :class => "inlineCancel" %>
+    <% end %>
+  </h1>
+
+  <div class="mock_count">
+    <% if @project.mock_lists.any? %>
+      <%= pluralize(@project.mock_lists.size, "mock") %>
+    <% else %>
+      No mocks
+    <% end %>
+  </div>
+</div>
+
+<div id="mock_lists">
+  <% @project.mock_lists.each do |mock_list| %>
+    <h2>
+      <span class="editable">
+        <%= mock_list.title %>
+      </span>
+      <% form_for :mock_list, mock_list, :url => mock_list_path(mock_list),
+        :html => {:method => :put} do |f| %>
+        <%= hidden_field_tag :inline, 1 %>
+        <%= f.text_field :title %>
+        <%= f.submit "Save" %> or
+        <%= link_to_function "Cancel", "", :class => "inlineCancel" %>
+      <% end %>
+    </h2>
+    <ul class="mock_grid clearfix">
+      <% mock_list.mocks.each do |mock| %>
+        <li<%= ' class="fresh"' if mock.fresh?(viewer) %>>
+          <div class="preview_container">
+            <%= link_to image_tag(mock.image.url(:thumb)), mock_path(mock),
+            :style => "background-image: url('#{mock.image.url(:small)}')" %>
+          </div>
+          <div class="text">
+            <%= link_to "##{mock.version}", mock_path(mock) %>
+          </div>
+        </li>
+      <% end %>
+      <li class="add_new_prompt">
+        <%= link_to "Add New Version",
+          new_mock_path(:project_id => @project.id,
+                       :mock_list_id => mock_list.id) %>
+      </li>
+    </ul>
+  <% end %>
+</div>

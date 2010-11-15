@@ -1,0 +1,34 @@
+input[type=file],
+input[type=text],
+textarea {
+  margin: 5px 0 10px;
+  width: 100%;
+}
+input[type=text] {
+  font-size: 20px;
+  padding: 5px;
+}
+input[type=submit] {
+  font-size: 14px;
+}
+textarea {
+  height: 200px;
+  padding: 8px 5px;
+}
+.field_row {
+  margin-bottom: 15px;
+}
+.fieldWithErrors {
+  display: inline;
+}
+.formError {
+  margin-bottom: 20px;
+}
+.form_holder {
+  padding: 50px 80px 35px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+.submit_bar {
+  text-align: right;
+}

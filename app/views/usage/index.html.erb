@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Mocks</th>
+    <th>Comments</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%=h user.name %></td>
+      <td><%=h user.mocks.count %></td>
+      <td><%=h user.comments.count %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td><%=h User.count %></td>
+    <td><%=h Mock.count %></td>
+    <td><%=h Comment.count %></td>
+  </tr>
+</table>

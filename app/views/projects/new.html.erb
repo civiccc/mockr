@@ -1,0 +1,14 @@
+<% @title = "Create a Project" %>
+
+<%= stylesheet_link_tag "shared/form" %>
+
+<div class="form_holder debossed">
+  <% form_for :project, @project, :url => projects_path do |f| %>
+    <div class="field_row">
+      <%= f.label :title, "Name" %><br />
+      <%= f.text_field :title %><br />
+      <%= f.error_message_on :title, "The project name " %>
+      <%= f.submit "Create Project" %> or <%= link_to "Cancel", home_url %>
+    </div>
+  <% end %>
+</div>

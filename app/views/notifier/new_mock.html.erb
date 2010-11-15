@@ -1,0 +1,5 @@
+<p><%= nl2br @mock.description %></p>
+
+<p><%= link_to "View Mock", mock_url(@mock) %></p>
+
+<%= link_to(image_tag(@mock.image.url, :width => '400'), mock_url(@mock)) %>

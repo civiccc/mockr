@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag "shared/form" %>
+
+<div class="form_holder debossed">
+  <h1>Edit User</h1>
+  <% form_for :user, @user, :url => user_path(@user),
+    :html => {:method => :put} do |f| %>
+    <div class="field_row">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field_row">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="submit_bar">
+      <%= link_to "Cancel", users_url %> or
+      <%= f.submit "Save" %>
+    </div>
+  <% end %>
+</div>

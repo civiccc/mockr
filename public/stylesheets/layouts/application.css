@@ -1,0 +1,103 @@
+body {
+  background: #2d2d2d;
+  color: #ddd;
+}
+body, textarea {
+  font-size: 14px;
+}
+.subnav {
+  background: #333;
+  margin-bottom: 30px;
+  padding: 0 20px;
+}
+.subnav ul {
+  margin-bottom: -1px;
+}
+.subnav a {
+  float: left;
+  font-weight: bold;
+  padding: 12px 20px 6px;
+}
+.subnav h1 {
+  padding: 20px 0 0;
+}
+.subnav .current {
+  background: #2d2d2d;
+}
+#content, #header {
+  width: 850px;
+}
+#content {
+  margin: 0 auto;
+  padding: 40px 0 60px;
+}
+#header_container {
+  background-image: url(../../images/home_background.png);  
+  border-bottom: 1px solid #333;
+  padding: 25px 0;
+}
+#header {
+  margin: 0 auto;
+}
+#header a {
+  border-bottom: none;
+  text-decoration: none;
+}
+#header .buttons {
+  float: right;
+  margin-top: 3px;
+}
+#header .buttons a {
+  margin-left: 8px;
+}
+#header .buttons img:hover {
+  opacity: .85;
+}
+#header .nav,
+#header #logo {
+  float: left;
+  margin-right: 15px;
+}
+#header .nav {
+  border-left: 1px dotted #777;
+  font-size: 12px;
+  line-height: 12px;
+  margin: 10px 0;
+  padding: 5px 0 3px 15px;
+}
+#header .nav a {
+  background-repeat: no-repeat;
+  margin-right: 10px;
+  padding: 2px 0 2px 18px;
+}
+#header .nav a.home {
+  background-image: url(../../images/home.png);
+}
+#header .nav a.settings {
+  background-image: url(../../images/settings.png);
+}
+#header .nav a:hover.hoverable {
+  background-position: 0 -22px;
+}
+a#logo {
+  background-image: url(../../images/logo-new.png);
+  background-position: top left;
+  background-repeat: no-repeat;
+  height: 38px;
+}
+a:hover#logo {
+  background-position: 0 -38px;
+}
+a#logo img {
+  visibility: hidden;
+}
+#notice {
+  background: white;
+  color: #333;
+  font-weight: bold;
+  padding: 16px 0 12px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}

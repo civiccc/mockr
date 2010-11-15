@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+    <title><%= "#{@title} |" if @title %> Mockr</title>
+    <link rel="shortcut icon" href="/images/feelings/happy.gif" />
+    <%= stylesheet_link_tag "base" %>
+    <%= stylesheet_link_tag "layouts/application" %>
+    <%= javascript_include_tag "jquery" %>
+    <%= javascript_include_tag "user" %>
+    <%= javascript_include_tag "scrollto" %>
+    <%= javascript_include_tag "plugins/jquery.form" %>
+    <%= javascript_include_tag "plugins/jquery.cookie" %>
+    <%= javascript_include_tag "plugins/jquery.shortkeys" %>
+    <%= javascript_include_tag "mockr" %>
+    <%= yield :head %>
+  </head>
+  <body<%= ' class="fullscreen"' unless @sidebar %>>
+    <%= render :partial => "/shared/facebook_connect_js" %>
+    <div id="header_container">
+      <div class="clearfix" id="header">
+        <div class="buttons">
+          <%= link_to image_tag('buttons/upload-mock.png'), new_mock_path %>
+          <%= link_to image_tag('buttons/new-project.png'), new_project_path %>
+        </div>
+        <%= link_to image_tag('logo-new.png'), home_path, :id => "logo" %>
+        <div class="nav">
+          <%= link_to "Home", home_path, :class => "home hoverable" %>
+          <%= link_to "Settings", users_path, :class => "settings hoverable" %>
+          <% if viewer %>
+            <%= logout_link("Sign out") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% if !flash[:notice].blank? %>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end %>
+    <div class="clearfix" id="content">
+      <%= yield %>
+    </div>
+  </body>
+</html>

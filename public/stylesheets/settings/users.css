@@ -1,0 +1,34 @@
+table {
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+th {
+  text-align: left;
+}
+tr:nth-child(even) {
+  background: #292929;
+}
+td {
+  padding: 10px 10px 9px;
+}
+td.actions {
+  text-align: right;
+}
+td.actions a {
+  color: #666;
+}
+th {
+  padding: 10px 0;
+}
+.divider {
+  color: #666;
+  margin: 0 4px;
+}
+#container {
+  padding: 0 20px;
+}
+#container form {
+  display: inline;
+}

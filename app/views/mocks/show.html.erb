@@ -1,0 +1,25 @@
+<% @title = @mock.title %>
+
+<%= stylesheet_link_tag "mocks/show" %>
+
+<style type="text/css">
+  <% Comment.feelings.each do |feeling| %>
+    li.<%= feeling %> {
+      background-image: url("/images/feelings/<%= feeling %>.gif");
+    }
+  <% end %>
+</style>
+
+<%= render :partial => "mocks/new_award" %>  
+
+<%= render :partial => "mocks/mockr_header" %>
+  
+<div id="sidebar">
+  <%= render :partial => "mocks/feedback_filters" %>
+  <%= render :partial => "mocks/add_feedback_form" %>
+  <%= render :partial => "mocks/comments" %>
+</div>
+
+<div id="mock">
+  <%= image_tag(@mock.image.url) %>
+</div>

@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+    <title><%= @title || '' %> | Mockr</title>
+    <link rel="shortcut icon" href="/images/feelings/happy.gif" />
+    <%= stylesheet_link_tag "base" %>
+    <%= stylesheet_link_tag "layouts/application" %>
+    <%= javascript_include_tag "jquery" %>
+    <%= javascript_include_tag "user" %>
+    <%= javascript_include_tag "scrollto" %>
+    <%= javascript_include_tag "plugins/jquery.form" %>
+    <%= javascript_include_tag "plugins/jquery.cookie" %>
+    <%= javascript_include_tag "plugins/jquery.shortkeys" %>
+    <%= javascript_include_tag "mockr" %>
+    <%= yield :head %>
+  </head>
+  <body<%= ' class="fullscreen"' unless @sidebar %>>
+    <%= render :partial => "/shared/facebook_connect_js" %>
+
+    <% if !flash[:notice].blank? %>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

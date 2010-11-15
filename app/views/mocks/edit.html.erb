@@ -1,0 +1,19 @@
+<%= stylesheet_link_tag "shared/form" %>
+
+<div class="form_holder debossed">
+  <% form_for :mock, @mock, :url => mock_path(@mock),
+    :html => {:method => :put} do |f| %>
+    <div class="field_row">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+    <div class="field_row">
+      <%= f.label :description %><br />
+      <%= f.text_area :description %>
+    </div>
+    <div class="submit_bar">
+      <%= link_to "Cancel", mock_path(@mock) %> or
+      <%= f.submit "Send Email" %>
+    </div>
+  <% end %>
+</div>

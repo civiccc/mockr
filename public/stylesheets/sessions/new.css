@@ -1,0 +1,31 @@
+a {
+  color: #ccc;
+  text-decoration: none;
+}
+body, td {
+  color: #ddd;
+  font-family: Helvetica, Arial, sans-serif;
+}
+body {
+  background: #1d1d1d;
+  margin: 0;
+  padding: 0;
+}
+form {
+  margin: 0;
+}
+table {
+  border-collapse: collapse;
+  height: 100%;
+}
+td {
+  padding: 0 30px;
+}
+#left_col {
+  background-color: #000;
+  background-image: url(../../images/home_background.png);
+  border-right: 1px solid #303030;
+}
+#left_col img {
+  display: block;
+}

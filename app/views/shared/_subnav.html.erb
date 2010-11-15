@@ -1,0 +1,14 @@
+<div class="subnav debossed rounded">
+  <h1><%= header %></h1>
+  <% if local_assigns[:links] %>
+    <ul class="clearfix">
+      <% links.each do |name, url| %>
+        <% if current_page?(url) %>
+          <li><%= link_to name, url, :class => "current" %></li>
+        <% else %>
+          <li><%= link_to name, url %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

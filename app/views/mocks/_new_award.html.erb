@@ -1,0 +1,27 @@
+<% if !params[:feeling].blank? %>
+  <div id="new_award" style="top: -300px;">
+    <h1>Congratulations!</h1>
+
+    <h2>The <strong>Great Mockr</strong> has granted you a new emoticon:</h2>
+
+    <div class="new_icon">
+      <%= image_tag("feelings/#{params[:feeling]}.gif") %><br />
+      <strong><%= params[:feeling].titleize %></strong>
+    </div>
+
+    <p>
+      Use it when you are feeling particularly
+      <strong><%= params[:feeling].titleize %></strong>.
+    </p>
+    
+    <div class="close">
+      <%= link_to_function "Thank You",
+        "$('#new_award').animate({top: '-=400px'}, 1200)" %>  
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(function() {
+      $('#new_award').animate({top: 0}, 1200);
+    });
+  </script>
+<% end %>

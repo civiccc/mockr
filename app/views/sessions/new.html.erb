@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+    <%= stylesheet_link_tag "sessions/new" %>
+    <link rel="shortcut icon" href="/images/feelings/happy.gif" />
+    <title>Welcome to Mockr!</title>
+    <%= javascript_include_tag "jquery" %>
+  </head>
+  <body>
+    <%= render :partial => "/shared/facebook_connect_js" %>
+    <table>
+      <tr>
+        <td id="left_col">
+          <%= image_tag("logo-large.png") %>
+        </td>
+        <td>
+          <%= image_tag("intro.png") %>
+          <% if viewer.authenticated? %>
+
+            <% if Mockr.unclaimed? %>
+              Hi <%= fbml_plain_name(viewer, :firstnameonly => false) %>.
+              <%= button_to("Claim this!", claim_path) %>
+            <% else %>
+                Sorry <%= fbml_plain_name(viewer.facebook_uid) %>,
+                but you're not on the list.
+            <% end %>
+
+            (Not you? <%= logout_link("Log out") %>)
+          <% else %>
+            <%= login_button %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

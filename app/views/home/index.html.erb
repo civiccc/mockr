@@ -1,0 +1,53 @@
+<% @title = "Home" %>
+
+<%= stylesheet_link_tag "shared/mock_grid" %>
+<%= stylesheet_link_tag "home" %>
+
+<div id="primary_col">
+  <div id="recent_mocks">
+    <h2>Recent Mocks</h2>
+      <%
+        Mock.recent(18).with_author_and_project_data.
+          in_groups_of(3, false) do |mocks|
+      %>
+        <ul class="mock_grid clearfix">
+          <% mocks.each do |mock| %>
+            <li<%= ' class="fresh"' if mock.fresh?(viewer) %>>
+              <div class="preview_container">
+                <%= link_to image_tag(mock.image.url(:thumb)), mock_path(mock) %>
+              </div>
+              <div class="text">
+                <%= link_to mock.title, mock_path(mock) %>
+                <div class="meta">
+                  by <%=h mock.author.first_name %> -
+                  <%= distance_of_time_in_words_to_now mock.created_at %> ago
+                  <br />
+                  in <%= link_to mock.project.title,
+                                 project_path(mock.project) %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+  </div>
+</div>
+
+<div id="secondary_col">
+  <% if Project.active.any? %>
+    <h2>Active Projects</h2>
+    <ul class="project_list">
+      <% Project.active.each do |project| %>
+        <li><%= link_to project.title, project_path(project) %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if Project.all.any? %>
+    <h2>All Projects</h2>
+    <ul class="project_list">
+      <% Project.alphabetical.all.each do |project| %>
+        <li><%= link_to project.title, project_path(project) %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

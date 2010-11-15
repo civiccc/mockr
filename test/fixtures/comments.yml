@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  mock_id: 1
+  author_id: 1
+  parent_id: 1
+  feeling: 
+  text: MyString
+  x: 1
+  y: 1
+  width: 1
+  height: 1
+
+two:
+  mock_id: 1
+  author_id: 1
+  parent_id: 1
+  feeling: 
+  text: MyString
+  x: 1
+  y: 1
+  width: 1
+  height: 1

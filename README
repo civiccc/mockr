@@ -1,0 +1,11 @@
+## Setup
+1) Copy config/facebook.yml.example to config/facebook.yml and modify it to
+   contain your app's values.
+2) Copy bin-examples/ to bin/ and edit each file to contain your app's values.
+3) Install necessary gems using bundler.
+4) Setup db: rake db:create; rake db:migrate
+
+## Running mockr in dev
+Make sure you source ./bin/export-env-vars-for-dev to set up your environment
+variables before starting the app.
+  $ source ./bin/export-env-vars-for-dev

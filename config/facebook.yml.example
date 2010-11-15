@@ -1,0 +1,17 @@
+production:
+  app_id:
+  key:
+  secret:
+  canvas_page_name:
+
+development:
+  app_id:
+  key:
+  secret:
+  canvas_page_name:
+
+test:
+  app_id:
+  key:
+  secret:
+  canvas_page_name:

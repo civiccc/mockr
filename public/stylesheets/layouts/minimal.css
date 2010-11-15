@@ -1,0 +1,16 @@
+input[type=text], textarea, #content {
+  font-size: 14px;  
+}
+#header {
+  background: #000;
+  padding: 10px;
+}
+#header a {
+  border-bottom: none;
+}
+#content {
+  color: #ccc;
+  margin: 0 auto;
+  padding: 60px 0;
+  width: 400px;
+}

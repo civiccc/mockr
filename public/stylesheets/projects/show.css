@@ -1,0 +1,64 @@
+.add_link {
+  background: #333;
+  float: right;
+  font-size: 12px;
+  font-weight: normal;
+  padding: 6px 8px;
+}
+.edit_link {
+  background: #333;
+  float: right;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0 10px 0 0;
+  padding: 6px 8px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+.mock_grid {
+  margin-bottom: 10px;
+}
+.mock_grid .add_new_prompt {
+  padding: 5px 5px 5px 0;
+}
+.mock_grid .add_new_prompt a {
+  background: #202020;
+  border: 1px solid #000;
+  border-bottom: 1px solid #444;
+  color: #555;
+  display: block;
+  font-size: 11px;
+  height: 148px;
+  line-height: 148px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 148px;
+}
+.mock_grid .add_new_prompt a:hover {
+  background: #222;
+  color: #fefe00;
+}
+#project_header form,
+#mock_lists h2 form {
+  font-size: 12px;
+  font-weight: normal;
+}
+#project_header input[type=text],
+#mock_lists h2 input[type=text] {
+  font-size: 16px;
+}
+#mock_lists h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+#project_header {
+  border-bottom: 1px solid #3a3a3a;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+#project_header h1 {
+  margin-bottom: 8px;
+}
+#project_header .mock_count {
+  color: #888;
+}

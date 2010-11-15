@@ -1,0 +1,37 @@
+<div class="module<%= ' commenting' if flash[:notice] 
+  %>" id="add_feedback_form_container">
+  <p class="instructions">
+    <%= link_to_function "Add general feedback", "mockr.startCommenting()" %> 
+    or drag a section on the screen.
+  </p>
+  <% form_for :comment, @comment, :url => comments_path,
+              :html => {:id => 'add_feedback_form'} do |f| %>
+    <%= f.hidden_field :mock_id, :value => @mock.id %>
+    <%= f.hidden_field :x %>
+    <%= f.hidden_field :y %>
+    <%= f.hidden_field :width %>
+    <%= f.hidden_field :height %>
+    <%= f.text_area :text %>
+    <div class="clearfix">
+      <ul class="feelings_list clearfix" id="feelings_input_fields">
+        <%= render :partial => "/mocks/feeling",
+                   :collection => Comment.basic_feelings,
+                   :locals => {:f => f} %>
+        <% if viewer.awards.any? %>
+          <li><%= link_to_function "More&hellip;",
+            "$('#advanced_feelings').slideToggle();", :tabindex => -1 %></li>
+        <% end %>
+      </ul>
+      <%= f.hidden_field :author_id, :value => viewer.id %>
+      <%= image_submit_tag("buttons/add_feedback.gif") %>
+    </div>
+    <div class="clearfix">
+      <ul class="feelings_list clearfix" id="advanced_feelings" 
+      style="display: none;">
+        <%= render :partial => "/mocks/feeling",
+                   :collection => viewer.awarded_feelings,
+                   :locals => {:f => f} %>
+      </ul>
+    </div>
+  <% end %>
+</div>
