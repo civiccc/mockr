@@ -1,0 +1,97 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'heroku'
+
+class Client
+  def initialize(heroku, app_name)
+    @heroku = heroku
+    @app_name = app_name
+  end
+
+  attr_reader :app_name
+
+  def run(method, *args)
+    @heroku.send(method, @app_name, *args)
+  end
+end
+
+class App
+  HEROKU = Heroku::Client.new('XXX','XXX')
+
+  def self.all_app_names
+    HEROKU.list.
+      map{|app_name, owner| app_name}.
+      select{|app_name| app_name =~ /^mockr-/}
+  end
+
+  def create
+    @client.run(:create)
+    update_config_vars
+    git_remote_add
+    git_push
+    rake_db_migrate
+  end
+
+  def initialize(app_name)
+    @client = Client.new(HEROKU, app_name)
+  end
+
+  def name
+    @client.app_name
+  end
+
+  def update_config_vars
+    @client.run(:add_config_vars,
+      {
+        'INSTANCE_NAME'            => name,
+        'APP_HOST'                 => "#{name}.heroku.com",
+        'GMAIL_SMTP_USER'          => 'XXX',
+        'GMAIL_SMTP_PASSWORD'      => 'XXX',
+        'AWS_S3_ACCESS_KEY_ID'     => 'XXX',
+        'AWS_S3_SECRET_ACCESS_KEY' => 'XXX',
+        'FB_APP_ID'                => 'XXX',
+        'FB_KEY'                   => 'XXX',
+        'FB_SECRET'                => 'XXX',
+        'FB_CANVAS_PAGE_NAME'      => 'mockr',
+      }
+    )
+  end
+
+  def config_vars
+    @client.run(:config_vars)
+  end
+
+  def rake_db_migrate
+    @client.run(:rake, "db:migrate")
+  end
+
+  def git_remote_add
+    `git remote add #{name} git@heroku.com:#{name}.git`
+  end
+
+  def git_push
+    `git push #{name} master:master`
+  end
+end
+
+
+app_name = ARGV.first
+
+apps = if app_name == 'all'
+  App.all_apps
+else
+  [App.new("mockr-" + app_name)]
+end
+
+
+command = ARGV[1]
+
+apps.each do |app|
+  if app.respond_to?(command)
+    puts "#{app.name}: #{command}"
+    app.send(command)
+  else
+    puts "unknown command #{command}"
+  end
+end

@@ -1,5 +1,0 @@
-#!/bin/bash
-
-NAME=$1
-git push $NAME master:master
-#heroku rake db:migrate --app $NAME
