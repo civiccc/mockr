@@ -4,5 +4,4 @@ db/schema.rb
 *~
 tmtags
 public/mocks
-config/facebook.yml
 bin/*

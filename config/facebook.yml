@@ -1,0 +1,4 @@
+app_id: <%= ENV['FB_APP_ID'] %>
+key: <%= ENV['FB_KEY'] %>
+secret: <%= ENV['FB_SECRET'] %>
+canvas_page_name: <%= ENV['FB_CANVAS_PAGE_NAME'] %>
