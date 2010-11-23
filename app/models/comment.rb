@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
 
+  MAX_COMMENT_LENGTH = 2_000 
   belongs_to :author,
     :class_name => "User"
   belongs_to :mock, :touch => true
@@ -34,6 +35,12 @@ class Comment < ActiveRecord::Base
     self.parent_id ? self.parent.children : []
   end
 
+  before_validation :truncate_text_if_necessary
+
+  def truncate_text_if_necessary
+    self.text = self.text[0, MAX_COMMENT_LENGTH]
+  end
+
   after_create do |comment|
     discussions = MockView.discussions_relevant_to(comment)
     discussions.each do |discussion|
@@ -66,7 +73,7 @@ class Comment < ActiveRecord::Base
   def self.advanced_feelings
      self.feelings - self.basic_feelings
   end
-  
+
   def self.feelings
     Dir.glob("public/images/feelings/*").map do |name|
       name.split("/").last.gsub(".gif", "")
