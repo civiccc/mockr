@@ -58,8 +58,17 @@ class Mock < ActiveRecord::Base
     self.mock_list.project
   end
   
+  def title=(title)
+    mock_list = self.mock_list
+    mock_list.update_attribute(:title, title)
+  end
+
   def title
     "#{self.mock_list.title} #{self.version}"
+  end
+
+  def default_subject
+    self.title
   end
 
   def filtered_comments(filter, user)

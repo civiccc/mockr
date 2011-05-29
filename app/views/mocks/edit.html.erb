@@ -1,14 +1,17 @@
-<%= stylesheet_link_tag "shared/form" %>
+<%= stylesheet_link_tag "shared/form", "mocks/edit" %>
 
 <div class="form_holder debossed">
   <% form_for :mock, @mock, :url => mock_path(@mock),
     :html => {:method => :put} do |f| %>
     <div class="field_row">
-      <%= f.label :title %><br />
-      <%= f.text_field :title %>
+      <%= f.label :title, "Subject" %>
+      <div class="subject">
+        <%= f.text_field :title %>
+        <%= @mock.version %>
+      </div>
     </div>
     <div class="field_row">
-      <%= f.label :description %><br />
+      <%= f.label :description, "Body" %><br />
       <%= f.text_area :description %>
     </div>
     <div class="submit_bar">
