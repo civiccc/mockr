@@ -29,6 +29,6 @@ module ApplicationHelper
   end
 
   def logout_link(text)
-    link_to(text, logout_path, :onclick => "FB.logout();")
+    link_to(text, logout_path, :onclick => "FB.logout();", :id => "logout")
   end
 end
