@@ -48,4 +48,12 @@ class MocksController < ApplicationController
     flash[:notice] = "Email sent!"
     redirect_to mock_path(@mock)
   end
+  
+  def destroy
+    @mock = Mock.find(params[:id])
+    project = @mock.project
+    @mock.destroy
+    flash[:notice] = "Mock deleted."
+    redirect_to project_path(project)
+  end
 end

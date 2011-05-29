@@ -24,6 +24,10 @@ class Mock < ActiveRecord::Base
     mock.assign_version if mock.version.nil?
   end
 
+  before_destroy do |mock|
+    mock.update_future_versions_of_destruction
+  end
+
   def self.hosted_by_aws?
     File.exists?(AWS_W3_CONFIG_FILE)
   end
@@ -122,5 +126,12 @@ class Mock < ActiveRecord::Base
 
   def deliver(email)
     Notifier.deliver_new_mock(self, email)
+  end
+
+  def update_future_versions_of_destruction
+    future_mocks = self.class.all(:conditions => "version > #{self.version}")
+    future_mocks.each do |mock|
+      mock.update_attribute(:version, mock.version - 1)
+    end
   end
 end

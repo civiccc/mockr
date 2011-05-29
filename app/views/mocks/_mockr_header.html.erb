@@ -30,6 +30,10 @@
         new_mock_path(:mock_list_id => @mock.mock_list_id),
         :class => "button" %>
     </li>
+    <li>
+      <%= link_to "Delete", mock_path, :method => :delete,
+        :confirm => "Are you sure you want to delete this mock?" %>
+    </li>
   </ul>
   <h2>
     <%= link_to @mock.project.title, project_path(@mock.project) %>
