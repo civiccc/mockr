@@ -40,6 +40,14 @@
       <span class="editable">
         <%= mock_list.title %>
       </span>
+      <% if mock_list.mocks.any? %>
+        <%= link_to "Delete", mock_list_path(mock_list), :method => :delete,
+          :confirm => "Are you sure you want to remove this mock?",
+          :class => "edit_link" %>
+      <% else %>
+        <%= link_to "Delete", mock_list_path(mock_list), :method => :delete,
+          :class => "edit_link" %>
+      <% end %>
       <% form_for :mock_list, mock_list, :url => mock_list_path(mock_list),
         :html => {:method => :put} do |f| %>
         <%= hidden_field_tag :inline, 1 %>

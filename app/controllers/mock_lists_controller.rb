@@ -8,4 +8,11 @@ class MockListsController < ApplicationController
       redirect_to project_path(@mock_list.project_id)
     end
   end
+  
+  def destroy
+    @mock_list = MockList.find(params[:id])
+    @mock_list.destroy
+    flash[:notice] = "Mock removed."
+    redirect_to project_path(@mock_list.project)
+  end
 end
