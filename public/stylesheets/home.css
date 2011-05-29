@@ -4,6 +4,19 @@ h2 {
   font-weight: bold;
   text-align: left;
 }
+.more {
+  background: #333;
+  display: block;
+  font-weight: bold;
+  margin-top: 15px;
+  padding: 12px 0;
+  text-align: center;
+  width: 500px;
+}
+.more.loading {
+  background: #282828;
+  color: #666;
+}
 #primary_col {
   float: left;
   width: 600px;

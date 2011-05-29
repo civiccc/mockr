@@ -1,9 +1,12 @@
 class Mock < ActiveRecord::Base
+  DISPLAY_LIMIT = 18
+  
   belongs_to :author, :class_name => "User"
   belongs_to :mock_list
 
   has_many :comments, :order => "created_at DESC"
 
+  named_scope :offset, lambda {|offset| {:offset => offset}}
   named_scope :recent, lambda {|limit| {:order => "id DESC", :limit => limit}}
   named_scope :with_author_and_project_data,
               :include => [:author, {:mock_list => :project}]
@@ -23,6 +26,10 @@ class Mock < ActiveRecord::Base
 
   def self.hosted_by_aws?
     File.exists?(AWS_W3_CONFIG_FILE)
+  end
+  
+  def self.total_pages
+    self.count > 0 ? (self.count.to_f / DISPLAY_LIMIT).ceil : 0
   end
 
   def attachment_body

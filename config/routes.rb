@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource  :session
   map.resources :settings, :collection => {:email => :get, :users => :get}
   map.resources :users
-
+  map.resources :home, :collection => {:mock_set => :get}
   map.claim '/claim', :controller => :claim
   map.connect '/intro', :controller => :intro
 
