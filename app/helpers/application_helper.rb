@@ -25,11 +25,7 @@ module ApplicationHelper
   end
 
   def login_button
-    "<fb:login-button></fb:login-button>"
-  end
-
-  def login_button
-    "<fb:login-button></fb:login-button>"
+    "<fb:login-button size='large'>Login with Facebook</fb:login-button>"
   end
 
   def logout_link(text)
