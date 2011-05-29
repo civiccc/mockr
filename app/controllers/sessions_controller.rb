@@ -8,7 +8,9 @@ class SessionsController < ApplicationController
   end
 
   def new
-    redirect_to root_path if viewer.authorized?
+    if viewer.authorized?
+      redirect_to params[:next_url] || root_path
+    end
   end
 
   def destroy

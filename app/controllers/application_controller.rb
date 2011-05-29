@@ -19,8 +19,7 @@ class ApplicationController < ActionController::Base
 
   def require_authorization
     unless viewer.authorized?
-      #cookies[:redirect] = request.path
-      redirect_to new_session_path
+      redirect_to new_session_path(:next_url => request.path)
     end
   end
 end
