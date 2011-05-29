@@ -104,14 +104,6 @@ class Mock < ActiveRecord::Base
     end
   end
 
-# def author_feedback
-#   comments.group_by(&:author).to_a.map do |author, coms|
-#     [author, coms.size]
-#   end.sort_by do |author, count|
-#     author.name
-#   end
-# end
-
   def deliver(email)
     Notifier.deliver_new_mock(self, email)
   end
