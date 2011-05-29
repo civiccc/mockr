@@ -128,6 +128,7 @@ class Mock < ActiveRecord::Base
     Notifier.deliver_new_mock(self, email)
   end
 
+  # TODO [chris]: Does acts_as_list cover this?
   def update_future_versions_of_destruction
     future_mocks = self.class.all(:conditions => "version > #{self.version}")
     future_mocks.each do |mock|

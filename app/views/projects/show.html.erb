@@ -10,6 +10,9 @@
   <h1>
     <%= link_to "+ Add Mock to Project",
       new_mock_path(:project_id => @project.id), :class => "add_link rounded" %>
+    <%= link_to "Delete", project_path(@project), :method => :delete,
+      :class => "edit_link rounded",
+      :confirm => "Are you sure you want to delete this project?" %>
     <span class="editable">
       <%= @project.title %>
     </span>
