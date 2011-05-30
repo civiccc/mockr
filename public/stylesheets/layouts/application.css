@@ -103,3 +103,6 @@ a#logo img {
   top: 0;
   width: 100%;
 }
+#tabbed_content {
+  margin: 0 20px;
+}

@@ -11,12 +11,19 @@ GEM
     activeresource (2.3.10)
       activesupport (= 2.3.10)
     activesupport (2.3.10)
+    addressable (2.2.6)
     aws-s3 (0.6.2)
       builder
       mime-types
       xml-simple
     builder (2.1.2)
+    eventmachine (0.12.10)
+    faraday (0.5.7)
+      addressable (~> 2.2.4)
+      multipart-post (~> 1.1.0)
+      rack (< 2, >= 1.1.0)
     mime-types (1.16)
+    multipart-post (1.1.2)
     mysql (2.8.1)
     pg (0.9.0)
     rack (1.1.0)
@@ -28,6 +35,17 @@ GEM
       activesupport (= 2.3.10)
       rake (>= 0.8.3)
     rake (0.8.7)
+    simple_oauth (0.1.5)
+    tinder (1.4.4)
+      activesupport
+      eventmachine
+      faraday (~> 0.5.1)
+      mime-types
+      multipart-post
+      twitter-stream
+    twitter-stream (0.1.13)
+      eventmachine (~> 0.12.8)
+      simple_oauth (~> 0.1.4)
     xml-simple (1.0.12)
 
 PLATFORMS
@@ -38,3 +56,4 @@ DEPENDENCIES
   mysql
   pg
   rails (~> 2.3.5)
+  tinder

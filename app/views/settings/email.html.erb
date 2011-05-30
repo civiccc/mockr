@@ -5,7 +5,11 @@
 <%= render :partial => "/shared/subnav",
            :locals => {
              :header => "Settings",
-             :links => [["Users", users_path], ["Email", email_settings_path]]
+             :links => [
+               ["Users", users_path],
+               ["Email", email_settings_path],
+               ["Campfire", campfire_settings_path]
+             ]
            } %>
 
 <div id="tabbed_content">

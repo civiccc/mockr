@@ -16,7 +16,9 @@ class MocksController < ApplicationController
       mock.save!
       mock.deliver(params[:email]) if params[:send_email].to_i == 1
       flash[:notice] = "Mock created!"
-      redirect_to mock_path(mock)
+      url = mock_url(mock)
+      Campfire.notify_mock_created(mock, url)
+      redirect_to url
     rescue ActiveRecord::RecordInvalid
       render :action => :new
     end

@@ -1,0 +1,39 @@
+<% @title = "Settings" %>
+
+<%= stylesheet_link_tag "shared/form", "settings/campfire" %>
+
+<%= render :partial => "/shared/subnav",
+           :locals => {
+             :header => "Settings",
+             :links => [
+               ["Users", users_path],
+               ["Email", email_settings_path],
+               ["Campfire", campfire_settings_path]
+             ]
+           } %>
+
+<div id="tabbed_content">
+  <% form_tag update_campfire_settings_path, :method => :put,
+    :id => "campfire_form" do %>
+    <div class="field_row">
+      <%= label_tag "campfire_subdomain", "Subdomain:" %><br />
+      <%= text_field_tag "campfire_subdomain",
+        @campfire_settings["campfire_subdomain"] %>.campfirenow.com
+    </div>
+    
+    <div class="field_row">
+      <%= label_tag "campfire_token", "Token:" %><br />
+      <%= text_field_tag "campfire_token", @campfire_settings["campfire_token"]
+      %>
+    </div>
+    
+    <div class="field_row">
+      <%= label_tag "campfire_room", "Room Name:" %><br />
+      <%= text_field_tag "campfire_room", @campfire_settings["campfire_room"] %>
+    </div>
+      
+    <div class="field_row">
+      <%= submit_tag %>
+    </div>
+  <% end %>
+</div>
