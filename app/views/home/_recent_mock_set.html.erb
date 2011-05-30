@@ -11,9 +11,6 @@
         <div class="text">
           <%= link_to mock.title, mock_path(mock) %>
           <div class="meta">
-            by <%=h mock.author.first_name %> -
-            <%= distance_of_time_in_words_to_now mock.created_at %> ago
-            <br />
             in <%= link_to mock.project.title,
                            project_path(mock.project) %>
           </div>
