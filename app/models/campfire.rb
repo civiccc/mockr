@@ -7,8 +7,8 @@ class Campfire
       room.speak mock.image.url
       room.speak url
     end
-  rescue Tinder::AuthenticationFailed, # Invalid token
-         NoMethodError                 # Invalid subdomain
+  # Handle invalid token and invalid subdomain errors respectively.
+  rescue Tinder::AuthenticationFailed, NoMethodError                
     # Do nothing.
   end
 
