@@ -10,7 +10,7 @@ class MocksController < ApplicationController
       else
         project_id = params[:project][:id].to_i
       end
-      mock.attach_mock_list_if_necessary!(project_id)
+      mock.attach_mock_list_if_necessary!(project_id, params[:mock][:title])
     end
     begin
       mock.save!

@@ -44,10 +44,11 @@ class Mock < ActiveRecord::Base
     end
   end
 
-  def attach_mock_list_if_necessary!(project_id)
+  def attach_mock_list_if_necessary!(project_id, title)
     if !self.mock_list_id
       project = Project.find(project_id)
-      ml = project.mock_lists.create(:title => project.default_mock_list_title)
+      ml = project.mock_lists.create(:title => 
+        title || project.default_mock_list_title)
       self.mock_list_id = ml.id
     end
   end
@@ -71,7 +72,7 @@ class Mock < ActiveRecord::Base
   
   def title=(title)
     mock_list = self.mock_list
-    mock_list.update_attribute(:title, title)
+    mock_list.update_attribute(:title, title) if mock_list
   end
 
   def title

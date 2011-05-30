@@ -11,6 +11,12 @@
       <%= f.label :image %><br />
       <%= f.file_field :image %>
     </div>
+    <% if params[:mock_list_id].blank? %>
+      <div class="field_row">
+        <%= f.label :title %><br />
+        <%= f.text_field :title %>
+      </div>
+    <% end %>
     <div class="field_row">
       <%= f.label :description %><br />
       <%= f.text_area :description %>
