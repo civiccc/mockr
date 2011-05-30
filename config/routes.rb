@@ -13,7 +13,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :home, :collection => {:mock_set => :get}
   map.claim '/claim', :controller => :claim
-  map.connect '/intro', :controller => :intro
 
   map.home '', :controller => 'home', :actions => 'index'
   map.usage '/usage', :controller => 'usage'
