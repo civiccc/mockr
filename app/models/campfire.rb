@@ -2,7 +2,7 @@ class Campfire
   KEYS = ["campfire_subdomain", "campfire_token", "campfire_room"]
 
   def self.notify_mock_created(mock, url)
-    if room
+    if use? && room
       room.speak "#{mock.author.name} posted a new mock:"
       room.speak mock.image.url
       room.speak url
@@ -35,5 +35,9 @@ class Campfire
       end
       settings
     end
+  end
+  
+  def self.use?
+    !self.settings["campfire_subdomain"].blank?
   end
 end
