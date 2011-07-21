@@ -8,7 +8,7 @@ atom_feed do |feed|
       entry.content(render(:partial => "entry_content.html.erb",
         :locals => {:mock => mock}), :type => "html")
       entry.author do |author|
-        author.name "Chris Chan"
+        author.name mock.author.name
       end
     end
   end
