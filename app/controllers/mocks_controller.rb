@@ -33,7 +33,7 @@ class MocksController < ApplicationController
   end
 
   def index
-    @mocks = Mock.recent.all
+    @mocks = Mock.recent(50).all
     respond_to do |format|
       format.atom
     end
