@@ -1,4 +1,7 @@
 class MocksController < ApplicationController
+  # Allow 3rd party services to access the atom feed.
+  skip_before_filter :require_authorization, :only => :index
+
   def new
   end
 
