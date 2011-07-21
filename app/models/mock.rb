@@ -76,7 +76,7 @@ class Mock < ActiveRecord::Base
   end
 
   def title
-    "#{self.mock_list.title} #{self.version}"
+    self.mock_list ? "#{self.mock_list.title} #{self.version}" : ""
   end
 
   def default_subject
