@@ -2,6 +2,12 @@
   margin: 0 -25px 0 0;
   text-align: left;
 }
+.mock_grid img:active {
+  -webkit-transform:translateY(1px);
+  -moz-transform:translateY(1px);
+  -moz-box-shadow: 0 1px 1px #000;
+  -webkit-box-shadow: 0 1px 1px #000;
+}
 .mock_grid img {
   background: #444;
   display: block;

@@ -58,6 +58,10 @@ body, textarea {
   float: left;
   margin-right: 15px;
 }
+#header #logo:active {
+  -webkit-transform:translateY(1px);
+  -moz-transform:translateY(1px);
+}
 #header .nav {
   font-size: 12px;
   line-height: 12px;
