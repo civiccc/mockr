@@ -1,20 +1,29 @@
-<p><%= @comment.author.first_name %> says:</p>
-
 <p>
-&ldquo;<%= @comment.text %>&rdquo;
+  <strong><%= @comment.author.first_name %></strong>:<br />
+  &ldquo;<%= @comment.text %>&rdquo;
 </p>
 
 <p>
-<%= link_to "Reply to #{@comment.author.first_name}", mock_url(@comment.mock) %>
+  <%= link_to "Reply to #{@comment.author.first_name}",
+    mock_url(@comment.mock) %>
 </p>
+
+<% if @comment.parent_id || @comment.siblings.any? %>
+----
+<% end %>
+
 <% if @comment.parent_id && @comment.siblings.any? %>
-  ----
-  <br />
   <% @comment.siblings.sort_by(&:created_at).reverse.each do |c| %>
     <p>
-      <%= distance_of_time_in_words(@comment.created_at, c.created_at) %>
-      before, <%= c.author.first_name %> said:<br />
+      <strong><%= c.author.first_name %></strong>:<br />
       &ldquo;<%= c.text %>&rdquo;
     </p>
   <% end %>
+<% end %>
+
+<% if @comment.parent_id %>
+  <p>
+    <strong><%= @comment.parent.author.first_name %></strong>:<br />
+    &ldquo;<%= @comment.parent.text %>&rdquo;
+  </p>
 <% end %>
