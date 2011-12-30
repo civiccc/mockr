@@ -13,18 +13,41 @@ class FacebookCookies
   end
 
   def self.fb_cookie_key
-    "fbs_#{FacebookConfig.app_id}"
+    "fbsr_#{FacebookConfig.app_id}"
   end
 
-  def self.parse(str)
-    return HashWithIndifferentAccess.new if str.blank?
-    result = HashWithIndifferentAccess.new
-    # The sub is just lchomp, if only that existed
-    str.chomp('"').sub(/^"/, '').split('&').each do |kv|
-      key, value = kv.split('=')
-      result[key] = value
+  def self.parse(raw_sr)
+    return {} if raw_sr.blank?
+
+    signature, encoded_json = raw_sr.split('.')
+    json = base64_url_decode(encoded_json)
+    data = nil
+
+    begin
+      data = ActiveSupport::JSON.decode(json)
+    rescue ActiveSupport::JSON::ParseError
+      # Facebook sometimes passes us bad JSON.
+      json += json.last == '"' ? '}' : '"}'
+      data = ActiveSupport::JSON.decode(json) rescue {}
     end
-    %w[expires uid].each {|key| result[key] = result[key].to_i}
-    result
+
+    (valid_signed_request?(json, signature) ? data : {}).with_indifferent_access
+  end
+
+private
+
+  def self.base64_url_decode(encoded)
+    encoded += '=' * (4 - encoded.length.modulo(4))
+    Base64.decode64(encoded.tr('-_', '+/'))
+  end
+
+  def self.base64_url_encode(plain)
+    Base64.encode64(plain).tr('+/', '-_').delete("\n=")
+  end
+
+  def self.valid_signed_request?(json, signature)
+    payload = base64_url_encode(json)
+    mysig = OpenSSL::HMAC.digest('sha256', FacebookConfig.secret, payload)
+    base64_url_encode(mysig) == signature
   end
 end

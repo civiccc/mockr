@@ -4,8 +4,8 @@ module Authentication
 
   def viewer
     @viewer ||=
-      User.find_by_facebook_uid(facebook_cookies[:uid]) ||
-      User.new(:facebook_uid => facebook_cookies[:uid])
+      User.find_by_facebook_uid(facebook_cookies[:user_id]) ||
+      User.new(:facebook_uid => facebook_cookies[:user_id])
   end
 
   def facebook_cookies

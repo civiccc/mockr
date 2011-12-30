@@ -9,26 +9,8 @@
       xfbml: true
     });
 
-    FB.Event.subscribe('auth.sessionChange', function(response) {
+    FB.Event.subscribe('auth.authResponseChange', function(response) {
       window.location.reload();
-    });
-
-    FB.getLoginStatus(function(response) {
-      $(document).trigger('fbconnect.update', [response]);
-    });
-
-    FB.getLoginStatus(function(response) {
-      if (response.session) {
-        var query = FB.Data.query(
-          'select name from user where uid={0}', FB._session.uid
-        );
-
-        query.wait(function(rows) {
-          jQuery.cookie("fbname", rows[0].name, {path: '/'});
-        });
-      } else {
-          jQuery.cookie("fbname", null, {path: '/'});
-      }
     });
   };
 
