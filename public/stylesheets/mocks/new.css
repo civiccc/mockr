@@ -1,13 +1,30 @@
-.submit_bar {
-  border-top: 1px solid #666;
-  margin-top: 20px;
-  padding-top: 20px;
+.cancel_bar {
+  margin-top: 40px;
+	text-align: center;
 }
-#default_email a {
-  font-size: 11px;
+.form_holder {
+  padding: 180px 80px;
 }
-#email {
-  font-size: 13px;
-  margin: 0;
-  width: 250px;
+.dragging .form_holder {
+  background: #111;
+}
+.loading {
+  display: none;
+  height: 22px;
+  line-height: 22px;
+  background: url('../../images/progressbar.gif') repeat-x;
+}
+.instructions {
+  background: url('../../images/upload-files.png') no-repeat center top;
+  color: #ccc;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 120px;
+  text-align: center;
+}
+.submitted * {
+  display: none;
+}
+.submitted .loading {
+  display: block;
 }

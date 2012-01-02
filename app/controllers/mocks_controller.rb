@@ -6,25 +6,20 @@ class MocksController < ApplicationController
   end
 
   def create
-    mock = Mock.new(params[:mock])
-    if params[:project]
-      if params[:project][:id].blank?
-        project_id = Project.create_new_untitled_project!.id
-      else
-        project_id = params[:project][:id].to_i
-      end
-      mock.attach_mock_list_if_necessary!(project_id, params[:mock][:title])
+    mocks = params[:images].map do |image|
+      Mock.new(params[:mock].merge(:image => image))
     end
-    begin
+    project_id = params[:project_id].blank? ?
+      Project.create_new_untitled_project!.id : params[:project_id]
+    mocks.each_with_index do |mock, i|
+      title = File.basename(mock.image_file_name, File.extname(mock.image_file_name))
+      title = title.titleize
+      mock.attach_mock_list_if_necessary!(project_id, title)
       mock.save!
-      mock.deliver(params[:email]) if params[:send_email].to_i == 1
-      flash[:notice] = "Mock created!"
-      url = mock_url(mock)
-      Campfire.notify_mock_created(mock, url)
-      redirect_to url
-    rescue ActiveRecord::RecordInvalid
-      render :action => :new
     end
+    url = mock_url(mocks.first)
+    Campfire.notify_mocks_created(mocks, url)
+    render :json => {:success => true}
   end
 
   def show

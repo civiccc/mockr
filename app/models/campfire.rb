@@ -1,10 +1,12 @@
 class Campfire
   KEYS = ["campfire_subdomain", "campfire_token", "campfire_room"]
 
-  def self.notify_mock_created(mock, url)
+  def self.notify_mocks_created(mocks, url)
     room = find_room
     if use? && room
-      room.speak "#{mock.author.name} posted a new mock:"
+      mock = mocks.first
+      mocks_text = mocks.size == 1 ? "a new mock" : "#{mocks.size} new mocks"
+      room.speak "#{mock.author.name} posted #{mocks_text}:"
       room.speak mock.image.url
       room.speak url
     end

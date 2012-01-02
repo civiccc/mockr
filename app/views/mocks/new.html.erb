@@ -1,61 +1,32 @@
-<% @title = "Add a Mock" %>
+<% @title = "Upload Mocks" %>
 
-<%= stylesheet_link_tag "shared/form" %>
-<%= stylesheet_link_tag "mocks/new" %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "shared/form",
+                          "mocks/new" %>
+  <%= javascript_include_tag "plugins/jquery.ui.widget",
+  			          		   	   "plugins/jquery.iframe-transport",
+  						               "plugins/jquery.fileupload",
+                             "mocks/new" %>
+<% end %>
 
 <div class="form_holder debossed">
-  <% form_for :mock, :url => mocks_path, :html => {:multipart => true} do |f| %>
+  <% form_for :mock, :url => mocks_path, :html => {:multipart => true,
+      :id => "mock_creation_form"} do |f| %>
     <%= f.hidden_field :path, :value => "" %>
     <%= f.hidden_field :author_id, :value => viewer.id %>
-    <div class="field_row">
-      <%= f.label :image %><br />
-      <%= f.file_field :image %>
-    </div>
-    <% if params[:mock_list_id].blank? %>
-      <div class="field_row">
-        <%= f.label :title %><br />
-        <%= f.text_field :title %>
-      </div>
-    <% end %>
-    <div class="field_row">
-      <%= f.label :description %><br />
-      <%= f.text_area :description %>
-    </div>
-    <% if params[:mock_list_id].blank? %>
-      <div class="field_row">
-        <% fields_for :project do |g| %>
-          <%= g.label :id, "Add to Project:" %>
-          <%= g.select :id, Project.form_options,
-            {:selected => params[:project_id].to_i,
-             :disabled => Project::DISABLED_PROJECT_FORM_VALUE} %>
-        <% end %>
-      </div>
-    <% else %>
-      <%= f.hidden_field :mock_list_id, :value => params[:mock_list_id] %>    
-    <% end %>
-
-      <%= check_box_tag :send_email %>
-    <% if Setting[:notification_email] %>
-      Send email to
-      <span id="default_email">
-        <strong><%= Setting[:notification_email] %></strong>      
-        <%= link_to_function "change",
-          "$('#email').show().select(); $('#default_email').hide()" %>
-      </span>
-      <%= text_field_tag :email, Setting[:notification_email],
-        :style => "display: none" %>
-    <% else %>
-      <%= label_tag :send_email, "Send email to" %>
-      <%= text_field_tag :email %>
-    <% end %>
-
-    <div class="submit_bar">
-      <% if params[:project_id] %>
-        <%= link_to "Cancel", project_path(params[:project_id]) %>
-      <% else %>
-        <%= link_to "Cancel", home_path %>
-      <% end %>
-      or <%= f.submit "Create Mock" %>
-    </div>
+    <input type="file" name="images[]" id='file' multiple
+      style="display: none" />
+    <%= f.hidden_field :mock_list_id, :value => params[:mock_list_id] %>
+    <%= hidden_field_tag :project_id, params[:project_id] %>
+    <div class="instructions">Drag &amp; Drop Your Files to Upload</div>
+    <div class="loading rounded"></div>
   <% end %>
 </div>
+
+<p class="cancel_bar">
+	<% if params[:project_id] %>
+    <%= link_to "Back to Project", project_path(params[:project_id]) %>
+	<% else %>
+		<%= link_to "Back to Home", home_path %>
+	<% end %>
+</p>
