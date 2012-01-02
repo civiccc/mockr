@@ -30,7 +30,6 @@ class MocksController < ApplicationController
   def show
     @mock = Mock.find(params[:id])
     @last_viewed_at = MockView.last_viewed_at(@mock, viewer) if viewer.real?
-    @sidebar = !cookies[:sidebar] || (cookies[:sidebar].first.to_i == 1)
     log_view
     render :layout => "/layouts/mocks/show"
   end

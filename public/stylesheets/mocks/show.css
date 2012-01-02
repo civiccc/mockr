@@ -40,23 +40,6 @@ p.unread_notice a:hover {
 .read.highlighted .body {
   display: block;
 }
-.fullscreen #mock,
-.fullscreen #sidebar {
-  left: -400px;
-}
-.fullscreen #mock {
-  width: 100%;
-}
-#show_sidebar {
-  display: none;
-}
-.fullscreen #show_sidebar {
-  display: block;
-  left: 0;
-  position: absolute;
-  top: 10px;
-  z-index: 1000;
-}
 .highlight {
   background: #4e4e99;
   border: 1px solid #1a1a33;
