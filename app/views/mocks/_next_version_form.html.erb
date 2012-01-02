@@ -1,5 +1,5 @@
 <% form_for :mock, :url => mocks_path, :html => {:multipart => true,
-    :id => "mock_creation_form"} do |f| %>
+    :id => "mock_creation_form", :class => "fullscreen"} do |f| %>
   <%= f.hidden_field :path, :value => "" %>
   <%= f.hidden_field :author_id, :value => viewer.id %>
   <input type="file" name="images[]" id='file' multiple

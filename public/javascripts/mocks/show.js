@@ -1,5 +1,5 @@
 $(function() {
-    $('#mock_creation_form').fileupload({
+    $('.fullscreen#mock_creation_form').fileupload({
         dataType: 'json',
         url: '/mocks',
         singleFileUploads: false,
@@ -19,12 +19,19 @@ $(function() {
         }
     });
 
-    var dragCount = 0;
+    $("#add-next-version-link").click(function(e) {
+      e.preventDefault();
+      $(document.body).addClass("dragging");
+    });
 
+    $(".fullscreen#mock_creation_form").click(function() {
+      $(document.body).removeClass("dragging");
+    });
+
+    var dragCount = 0;
     $(document.body).bind('dragenter', function(e) {
       dragCount += 1;
       $(document.body).addClass("dragging");
-      $("#mock_creation_form").height($(window).height());
     });
     $(document.body).bind('dragleave', function(e) {
       dragCount -= 1;

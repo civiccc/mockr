@@ -281,6 +281,7 @@ var mockr = function() {
         $("#sidebar").height(height);
         $("#mock").height(height);
         $("#mock").width(width);        
+        $(".fullscreen#mock_creation_form").height($(window).height());
       }, 500)
     }
     
