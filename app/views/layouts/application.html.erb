@@ -4,17 +4,19 @@
   <head>
     <title><%= "#{@title} |" if @title %> Mockr</title>
     <link rel="shortcut icon" href="/images/feelings/happy.gif" />
-    <%= stylesheet_link_tag "base" %>
-    <%= stylesheet_link_tag "layouts/application" %>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-	</script>
+    <%= stylesheet_link_tag "base", "layouts/application" %>
+  	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+  	</script>
 
-    <%= javascript_include_tag "user" %>
-    <%= javascript_include_tag "scrollto" %>
-    <%= javascript_include_tag "plugins/jquery.form" %>
-    <%= javascript_include_tag "plugins/jquery.cookie" %>
-    <%= javascript_include_tag "plugins/jquery.shortkeys" %>
-    <%= javascript_include_tag "mockr" %>
+    <%= javascript_include_tag "user",
+                               "scrollto",
+                               "plugins/jquery.form",
+                               "plugins/jquery.cookie",
+                               "plugins/jquery.shortkeys",
+                               "plugins/jquery.ui.widget",
+    			          		   	   "plugins/jquery.iframe-transport",
+    						               "plugins/jquery.fileupload",
+                               "mockr" %>
     <%= yield :head %>
   </head>
   <body>

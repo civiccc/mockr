@@ -1,14 +1,15 @@
 <% @title = @mock.title %>
-
-<%= stylesheet_link_tag "mocks/show" %>
-
-<style type="text/css">
-  <% Comment.feelings.each do |feeling| %>
-    li.<%= feeling %> {
-      background-image: url("/images/feelings/<%= feeling %>.gif");
-    }
-  <% end %>
-</style>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "mocks/show" %>
+  <style type="text/css">
+    <% Comment.feelings.each do |feeling| %>
+      li.<%= feeling %> {
+        background-image: url("/images/feelings/<%= feeling %>.gif");
+      }
+    <% end %>
+  </style>
+  <%= javascript_include_tag "mocks/show" %>
+<% end %>
 
 <%= render :partial => "mocks/new_award" %>  
 
@@ -25,3 +26,5 @@
     <%= image_tag(@mock.image.url) %>
   </div>
 </div>
+
+<%= render :partial => "mocks/next_version_form" %>

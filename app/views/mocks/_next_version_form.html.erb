@@ -1,0 +1,11 @@
+<% form_for :mock, :url => mocks_path, :html => {:multipart => true,
+    :id => "mock_creation_form"} do |f| %>
+  <%= f.hidden_field :path, :value => "" %>
+  <%= f.hidden_field :author_id, :value => viewer.id %>
+  <input type="file" name="images[]" id='file' multiple
+    style="display: none" />
+  <%= f.hidden_field :mock_list_id, :value => @mock.mock_list_id %>
+  <%= hidden_field_tag :project_id, @mock.project.id %>
+  <div class="instructions">Add Your Next Version by Dropping this File</div>
+  <div class="loading rounded"></div>
+<% end %>

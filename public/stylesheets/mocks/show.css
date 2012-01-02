@@ -331,7 +331,6 @@ p.unread_notice a:hover {
     to(#222));
 }
 #header .mock_actions li {
-  border-left: 1px solid #222;
   float: left;
 }
 #header .mock_actions a {
@@ -380,7 +379,38 @@ p.unread_notice a:hover {
   margin-left: 5px;
   padding-left: 15px;
 }
-#userlight {
-  background: #99c;
-  border: 1px #55c solid;
+#mock_creation_form {
+  background: #111 url('../../images/upload-next-version.png') no-repeat center;
+  display: none;
+  height: 400px;
+  opacity: .8;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+.dragging #mock_creation_form {
+  display: block;
+}
+.loading {
+  background: url('../../images/progressbar.gif') repeat-x;
+  display: none;
+  height: 22px;
+  left: 50%;
+  margin: -11px auto 0 -125px;
+  position: absolute;
+  top: 50%;
+  width: 250px;
+}
+.submitted * {
+  display: none;
+}
+.submitted#mock_creation_form {
+  background-image: none;
+}
+.submitted .loading {
+  display: block;
+}
+#mock_creation_form .instructions {
+  text-indent: -9999px;
 }
