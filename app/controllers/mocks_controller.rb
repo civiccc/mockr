@@ -43,18 +43,6 @@ class MocksController < ApplicationController
     end
   end
 
-  def edit
-    @mock = Mock.find(params[:id])
-  end
-  
-  def update
-    @mock = Mock.find(params[:id])
-    @mock.update_attributes(params[:mock])
-    Notifier.deliver_new_mock(@mock)
-    flash[:notice] = "Email sent!"
-    redirect_to mock_path(@mock)
-  end
-  
   def destroy
     @mock = Mock.find(params[:id])
     project = @mock.project
