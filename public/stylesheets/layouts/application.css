@@ -98,7 +98,9 @@ a#logo img {
   visibility: hidden;
 }
 #notice {
-  background: white;
+  background: #e8d34e;
+  background: -moz-linear-gradient(top, #fdf578, #e8d34e);
+  background: -webkit-linear-gradient(top, #fdf578, #e8d34e);
   color: #333;
   font-weight: bold;
   padding: 14px 0;
