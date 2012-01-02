@@ -15,7 +15,8 @@ class MocksController < ApplicationController
     project_id = params[:project_id].blank? ?
       Project.create_new_untitled_project!.id : params[:project_id]
     mocks.each_with_index do |mock, i|
-      title = File.basename(mock.image_file_name, File.extname(mock.image_file_name))
+      title = File.basename(mock.image_file_name,
+        File.extname(mock.image_file_name))
       title = title.titleize
       mock.attach_mock_list_if_necessary!(project_id, title)
       mock.save!
