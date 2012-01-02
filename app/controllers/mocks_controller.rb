@@ -21,7 +21,7 @@ class MocksController < ApplicationController
       mock.save!
     end
     url = mock_url(mocks.first)
-    Campfire.notifymocks_created(mocks, url)
+    Campfire.notify_mocks_created(mocks, url)
     render :json => {
       :mocks_count => mocks.size,
       :mock_ids => mocks.map(&:id),
