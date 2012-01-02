@@ -287,7 +287,7 @@ p.unread_notice a:hover {
   line-height: 17px;
 }
 #header {
-  background-image: url(../../images/home_background.png);  
+  background-image: url(../../images/fake_brick.png);
   border-bottom: 1px solid #333;
   height: 49px;
   width: 100%;
