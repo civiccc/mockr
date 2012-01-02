@@ -3,6 +3,9 @@ class MocksController < ApplicationController
   skip_before_filter :require_authorization, :only => :index
 
   def new
+    if params[:failed]
+      flash.now[:notice] = "Ruh roh, your mock couldn't be uploaded."
+    end
   end
 
   def create
@@ -18,8 +21,12 @@ class MocksController < ApplicationController
       mock.save!
     end
     url = mock_url(mocks.first)
-    Campfire.notify_mocks_created(mocks, url)
-    render :json => {:success => true}
+    Campfire.notifymocks_created(mocks, url)
+    render :json => {
+      :mocks_count => mocks.size,
+      :mock_ids => mocks.map(&:id),
+      :project_id => project_id
+    }
   end
 
   def show

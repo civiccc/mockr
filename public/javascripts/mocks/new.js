@@ -4,13 +4,18 @@ $(function() {
         url: '/mocks',
         singleFileUploads: false,
         done: function (e, data) {
-          window.location = '/?uploaded=1';
+          result = data.result;
+          if (result.mocks_count == 1) {
+            window.location = '/mocks/' + result.mock_ids[0];
+          } else {
+            window.location = '/projects/' + result.project_id;
+          }
         },
         start: function (e) {
           $(this).addClass('submitted');
         },
         fail: function (e, data) {
-          window.location = '/?uploaded=0';
+          window.location = window.location + '?failed=1';
         },
         dragover: function(e, data) {
           $(document.body).addClass("dragging");

@@ -1,5 +1,3 @@
-* If you uploaded only one mock, you should be redirected to that mock page
-* Otherwise, you should be taken to the relevant project page
 * Improved error handling
 
 General
