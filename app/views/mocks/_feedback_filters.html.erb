@@ -1,15 +1,17 @@
-<div class="clearfix" id="feedback_header">
-  <div class="filter_links">
-    <%= link_to_function "Expand All", "mockr.expandAll()" %>
-    -
-    <%= link_to_function "Collapse All", "mockr.collapseAll()" %>
+<% if @mock.comments.any? %>
+  <div class="clearfix" id="feedback_header">
+    <div class="filter_links">
+      <%= link_to_function "Expand All", "mockr.expandAll()" %>
+      -
+      <%= link_to_function "Collapse All", "mockr.collapseAll()" %>
+    </div>
+    <ul id="stats_list">
+      <li class="happy" id="happy_count"
+        title="<%= pluralize(@mock.happy_count, "happy reaction") %>"><%=
+        @mock.happy_count %></li>
+      <li class="sad" id="sad_count"
+        title="<%= pluralize(@mock.sad_count, "sad reaction") %>"><%=
+        @mock.sad_count %></li>
+    </ul>
   </div>
-  <ul id="stats_list">
-    <li class="happy" id="happy_count"
-      title="<%= pluralize(@mock.happy_count, "happy reaction") %>"><%=
-      @mock.happy_count %></li>
-    <li class="sad" id="sad_count"
-      title="<%= pluralize(@mock.sad_count, "sad reaction") %>"><%=
-      @mock.sad_count %></li>
-  </ul>
-</div>
+<% end %>
