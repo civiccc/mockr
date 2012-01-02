@@ -22,7 +22,7 @@ body, textarea {
   padding: 20px 0 0;
 }
 .subnav .current {
-  background: #2d2d2d;
+  background: #1f1f1f;
 }
 #content, #header {
   width: 850px;
