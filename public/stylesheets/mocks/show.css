@@ -202,7 +202,6 @@ p.unread_notice a:hover {
   cursor: crosshair;
   position: relative;
   overflow: auto;
-/*  height: 500px;*/
   margin-left: 400px;
 }
 #new_award {
