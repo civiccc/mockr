@@ -101,11 +101,21 @@ a#logo img {
   background: white;
   color: #333;
   font-weight: bold;
-  padding: 16px 0 12px;
-  position: absolute;
+  padding: 14px 0;
+  position: relative;
   text-align: center;
-  top: 0;
   width: 100%;
+}
+#notice .hide_link {
+  background: url(../../images/flash-hide.png) no-repeat;
+  display: block;
+  float: right;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  text-indent: -9999px;
+  top: 9px;
+  width: 30px;
 }
 #tabbed_content {
   margin: 0 20px;

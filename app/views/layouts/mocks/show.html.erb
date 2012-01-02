@@ -15,11 +15,7 @@
   </head>
   <body>
     <%= render :partial => "/shared/facebook_connect_js" %>
-
-    <% if !flash[:notice].blank? %>
-      <div id="notice"><%= flash[:notice] %></div>
-    <% end %>
-
+    <%= render :partial => "/shared/flash", :locals => {:flash => flash} %>
     <%= yield %>
   </body>
 </html>

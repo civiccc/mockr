@@ -373,9 +373,10 @@ var KeyboardShortcuts = {
 
 var Flash = {
   setup: function() {
-    window.setTimeout(function() {
-      $("#notice").animate({top: -100});
-    }, 2000);
+    $("#notice .hide_link").click(function(e) {
+      e.preventDefault();
+      $("#notice").slideUp(50);
+    });
   }
 }
 $(function() {

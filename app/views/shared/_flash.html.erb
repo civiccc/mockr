@@ -1,0 +1,6 @@
+<% if !flash[:notice].blank? %>
+  <div id="notice">
+    <%= link_to "x", "#", :class => "hide_link" %>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
