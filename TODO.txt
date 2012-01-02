@@ -1,0 +1,17 @@
+* If you uploaded only one mock, you should be redirected to that mock page
+* Otherwise, you should be taken to the relevant project page
+* Improved error handling
+
+General
+* Dragging over any surface should allow you to upload a new set of mocks
+
+Mock Page
+* Dragging over a mock should allow you to upload the next version
+
+Project Page
+* Dragging over a mock should allow you to upload the next version
+* Dragging over an area that isn't a mock should allow you to upload the
+next mock
+
+Styling tweaks
+* Loading bar should be a yellow
