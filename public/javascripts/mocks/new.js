@@ -16,12 +16,18 @@ $(function() {
         },
         fail: function (e, data) {
           window.location = window.location + '?failed=1';
-        },
-        dragover: function(e, data) {
-          $(document.body).addClass("dragging");
         }
     });
-    $(document.body).bind('dragleave', function() {
-      $(document.body).removeClass("dragging");
+    var dragCount = 0;
+
+    $(document.body).bind('dragenter', function(e) {
+      $(document.body).addClass("dragging");
+      dragCount += 1;
+    });
+    $(document.body).bind('dragleave', function(e) {
+      dragCount -= 1;
+      if (dragCount == 0) {
+        $(document.body).removeClass("dragging");
+      }
     });
 });
