@@ -13,7 +13,7 @@
     <%= javascript_include_tag "mockr" %>
     <%= yield :head %>
   </head>
-  <body<%= ' class="fullscreen"' unless @sidebar %>>
+  <body>
     <%= render :partial => "/shared/facebook_connect_js" %>
 
     <% if !flash[:notice].blank? %>
