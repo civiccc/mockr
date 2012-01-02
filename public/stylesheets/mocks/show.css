@@ -303,11 +303,10 @@ p.unread_notice a:hover {
   margin: 8px 12px 0 9px;
 }
 #header h2 {
-  border-left: 1px dotted #666;
   font-size: 15px;
   line-height: 23px;
   margin: 14px 0 12px;
-  padding: 0 15px;
+  padding: 0 10px;
 }
 #header .mock_actions,
 #header .mock_nav {
