@@ -367,10 +367,6 @@ var KeyboardShortcuts = {
       "r": function() {
         mockr.reply();
       }
-      // TODO: Figure out how to make escape work in shortkeys.
-      // "esc", function() {
-      //   mockr.undoReply();
-      // }
     })
   }
 }
