@@ -70,10 +70,10 @@ html[xmlns] .clearfix {
   height:1%;
 }
 .debossed {
-  border: 1px solid #444;
-  border-bottom-color: #666;
-  border-top-color: #222;
-  background: #333;
+  border: 1px solid #333;
+  border-bottom-color: #444;
+  border-top-color: #111;
+  background: #292929;
 }
 .rounded {
   -moz-border-radius: 5px;
