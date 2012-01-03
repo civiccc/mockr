@@ -13,6 +13,8 @@ $(function() {
         },
         start: function (e) {
           $(this).addClass('submitted');
+          // Turn off click handler
+          $(".fullscreen#mock_creation_form").unbind("click");
         },
         fail: function (e, data) {
           window.location = window.location + '?failed=1';

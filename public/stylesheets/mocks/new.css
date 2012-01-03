@@ -3,28 +3,23 @@
 	text-align: center;
 }
 .form_holder {
-  padding: 180px 80px;
+  height: 500px;
+  padding: 0 80px;
 }
 .dragging .form_holder {
   background: #111;
 }
-.loading {
+.progress-bar {
   display: none;
-  height: 22px;
-  line-height: 22px;
-  background: url('../../images/progressbar.gif') repeat-x;
+  margin: 232px auto 0;
 }
 .instructions {
-  background: url('../../images/upload-files.png') no-repeat center top;
-  color: #ccc;
-  font-size: 20px;
-  font-weight: bold;
-  padding-top: 120px;
-  text-align: center;
+  background: url('../../images/upload-files.png') no-repeat center;
+  height: 500px;
 }
 .submitted * {
   display: none;
 }
-.submitted .loading {
+.submitted .progress-bar {
   display: block;
 }

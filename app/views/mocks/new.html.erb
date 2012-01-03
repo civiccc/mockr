@@ -18,8 +18,8 @@
       style="display: none" />
     <%= f.hidden_field :mock_list_id, :value => params[:mock_list_id] %>
     <%= hidden_field_tag :project_id, params[:project_id] %>
-    <div class="instructions">Drag &amp; Drop Your Files to Upload</div>
-    <div class="loading rounded"></div>
+    <div class="instructions"></div>
+    <div class="progress-bar"><span style="width: 100%"></span></div>
   <% end %>
 </div>
 

@@ -7,5 +7,5 @@
   <%= f.hidden_field :mock_list_id, :value => @mock.mock_list_id %>
   <%= hidden_field_tag :project_id, @mock.project.id %>
   <div class="instructions">Add Your Next Version by Dropping this File</div>
-  <div class="loading rounded"></div>
+  <div class="progress-bar"><span style="width: 100%"></span></div>
 <% end %>
