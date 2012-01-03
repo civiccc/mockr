@@ -1,19 +1,5 @@
-.add_link {
-  background: #282828;
-  float: right;
-  font-size: 12px;
-  font-weight: normal;
-  padding: 6px 8px;
-}
-.edit_link {
-  background: #282828;
-  float: right;
-  font-size: 12px;
-  font-weight: normal;
-  margin: 0 10px 0 0;
-  padding: 6px 8px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+.editing .delete_link {
+  display: none;
 }
 .mock_grid {
   margin-bottom: 10px;
@@ -38,6 +24,32 @@
   background: #222;
   color: #fefe00;
 }
+.mock_grid .delete_link,
+.mock_grid .edit_link {
+  display: none;
+  float: right;
+  margin: 2px 0 0 5px;
+  overflow: hidden;
+  text-indent: -9999px;
+}
+.mock_grid .text:hover .delete_link {
+  display: block;
+}
+.mock_grid .text.editing:hover .delete_link {
+  display: none;
+}
+.mock_grid .delete_link {
+  background: url(../../images/delete.png) no-repeat center;
+  height: 13px;
+  text-indent: -9999px;
+  width: 13px;  
+}
+.mock_grid .edit_link {
+  background: url(../../images/edit.png) no-repeat center;
+  height: 13px;
+  text-indent: -9999px;
+  width: 13px;
+}
 #project_header form,
 #mock_lists h2 form {
   font-size: 12px;
@@ -51,6 +63,13 @@
   font-size: 18px;
   margin-bottom: 10px;
 }
+#mock_lists form {
+  font-size: 11px;
+}
+#mock_lists input[type=text] {
+  margin: 6px 0;
+  width: 138px;
+}
 #project_header {
   border-bottom: 1px solid #3a3a3a;
   padding-bottom: 20px;
@@ -58,6 +77,23 @@
 }
 #project_header h1 {
   margin-bottom: 8px;
+}
+#project_header .add_link {
+  background: #282828;
+  float: right;
+  font-size: 12px;
+  font-weight: normal;
+  padding: 6px 8px;
+}
+#project_header .edit_link {
+  background: #282828;
+  float: right;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0 0 0 10px;
+  padding: 6px 8px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 #project_header .mock_count {
   color: #888;

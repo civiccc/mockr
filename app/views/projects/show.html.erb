@@ -8,14 +8,12 @@
 
 <div id="project_header">
   <h1>
-    <%= link_to "+ Add Mock to Project",
-      new_mock_path(:project_id => @project.id), :class => "add_link rounded" %>
     <%= link_to "Delete", project_path(@project), :method => :delete,
       :class => "edit_link rounded",
       :confirm => "Are you sure you want to delete this project? " +
         "This will delete ALL associated mocks and versions." %>
     <span class="editable">
-      <%= @project.title %>
+      <%= h @project.title %>
     </span>
     <% form_for :project, @project, :url => project_path(@project),
       :html => {:method => :put} do |f| %>
@@ -36,44 +34,40 @@
 </div>
 
 <div id="mock_lists">
-  <% @project.mock_lists.each do |mock_list| %>
-    <h2>
-      <span class="editable">
-        <%= mock_list.title %>
-      </span>
-      <% if mock_list.mocks.any? %>
-        <%= link_to "Delete", mock_list_path(mock_list), :method => :delete,
-          :confirm => "Are you sure you want to remove this mock?",
-          :class => "edit_link" %>
-      <% else %>
-        <%= link_to "Delete", mock_list_path(mock_list), :method => :delete,
-          :class => "edit_link" %>
-      <% end %>
-      <% form_for :mock_list, mock_list, :url => mock_list_path(mock_list),
-        :html => {:method => :put} do |f| %>
-        <%= hidden_field_tag :inline, 1 %>
-        <%= f.text_field :title %>
-        <%= f.submit "Save" %> or
-        <%= link_to_function "Cancel", "", :class => "inlineCancel" %>
-      <% end %>
-    </h2>
-    <ul class="mock_grid clearfix">
-      <% mock_list.mocks.each do |mock| %>
-        <li<%= ' class="fresh"' if mock.fresh?(viewer) %>>
+  <ul class="mock_grid clearfix">
+    <% @project.mock_lists.each do |mock_list| %>
+      <% mock = mock_list.mocks.last %>
+      <% if mock %>
+        <li>
           <div class="preview_container">
             <%= link_to image_tag(mock.image.url(:thumb)), mock_path(mock),
             :style => "background-image: url('#{mock.image.url(:small)}')" %>
           </div>
           <div class="text">
-            <%= link_to "##{mock.version}", mock_path(mock) %>
+            <%= link_to "Delete", mock_list_path(mock_list), :method => :delete,
+              :confirm => "Are you sure you want to remove this mock?",
+              :class => "delete_link" %>
+
+            <% form_for :mock_list, mock_list,
+              :url => mock_list_path(mock_list),
+              :html => {:method => :put} do |f| %>
+              <%= hidden_field_tag :inline, 1 %>
+              <%= f.text_field :title %>
+              <%= f.submit "Save" %> or
+              <%= link_to_function "Cancel", "", :class => "inlineCancel" %>
+            <% end %>          
+          
+            <%= link_to "#{mock_list.title}", mock_path(mock),
+              :class => "editable" %>
+          </div>
+          <div class="meta">
+            Version <%= mock.version %>            
           </div>
         </li>
       <% end %>
-      <li class="add_new_prompt">
-        <%= link_to "Add New Version",
-          new_mock_path(:project_id => @project.id,
-                       :mock_list_id => mock_list.id) %>
-      </li>
-    </ul>
-  <% end %>
+    <% end %>
+    <li class="add_new_prompt">
+      <%= link_to "Add Mock", new_mock_path(:project_id => @project.id) %>
+    </li>
+  </ul>
 </div>
