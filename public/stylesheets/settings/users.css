@@ -22,6 +22,10 @@ td.actions a {
 th {
   padding: 10px 0;
 }
+.add_user_row td {
+  padding-top: 20px;
+  text-align: center;
+}
 .divider {
   color: #666;
   margin: 0 4px;
@@ -31,4 +35,17 @@ th {
 }
 #container form {
   display: inline;
+}
+#new_user_form input {
+  margin-top: 2px;
+}
+#new_user_form li {
+  float: left;
+  margin-right: 10px;
+}
+#new_user_form #user_name {
+  width: 230px;
+}
+#new_user_form #user_facebook_uid {
+  width: 100px;
 }

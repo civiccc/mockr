@@ -38,5 +38,13 @@
         </td>
       </tr>
     <% end %>
+    <tfoot>
+      <tr class="add_user_row">
+        <td colspan="4">
+          <%= link_to "+ Add a User", new_user_path,
+            :class => "secondary button" %>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div>
