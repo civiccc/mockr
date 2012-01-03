@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag "shared/form" %>
+
+<div class="form_holder debossed">
+  <h1>Add a User</h1>
+  <% form_for :user, :url => users_path do |f| %>
+    <%= f.hidden_field :active %>
+    <div class="field_row">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field_row">
+      <%= f.label :facebook_uid, "Facebook UID" %><br />
+      <%= f.text_field :facebook_uid %>
+    </div>
+    <div class="field_row">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="submit_bar">
+      <%= link_to "Cancel", users_url %> or
+      <%= f.submit "Create User" %>
+    </div>
+  <% end %>
+</div>

@@ -1,14 +1,17 @@
 class UsersController < ApplicationController
   def create
     begin
-      User.activate!(
-        params[:friend_selector_id],
-        params[:friend_selector_name]
-      )
+      user = User.new(params[:user])
+      user.save!
+      flash[:notice] = "User added!"
     rescue => ex
       flash[:notice] = "That user could not be added."
     end
     redirect_to users_path
+  end
+
+  def new
+    @user = User.new(:active => true)
   end
 
   def edit
