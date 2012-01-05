@@ -58,12 +58,14 @@ class Mock < ActiveRecord::Base
   end
 
   def inferred_version
-    if self.mock_list
+    version = if self.mock_list
       previous_iterations_count = self.mock_list.mocks.size
       previous_iterations_count + 1
     else
       1
     end
+    puts "Assigning version #{version} to mock #{self.id}"
+    version
   end
 
   def project
