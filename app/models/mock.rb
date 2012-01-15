@@ -133,7 +133,9 @@ class Mock < ActiveRecord::Base
 
   # TODO [chris]: Does acts_as_list cover this?
   def update_future_versions_of_destruction
-    future_mocks = self.class.all(:conditions => "version > #{self.version}")
+    conditions =
+      "mock_list_id = #{self.mock_list_id} AND version > #{self.version}"
+    future_mocks = self.class.all(:conditions => conditions)
     future_mocks.each do |mock|
       mock.update_attribute(:version, mock.version - 1)
     end
