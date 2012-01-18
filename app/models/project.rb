@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
 
   named_scope :alphabetical, :order => "title ASC"
   named_scope :active, lambda {
-    {:order => ["updated_at >= ?", 1.week.ago]}
+    {:conditions => ["updated_at >= ?", 1.week.ago]}
   }
 
   DISABLED_PROJECT_FORM_VALUE = -1
