@@ -5,7 +5,9 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :title
 
   named_scope :alphabetical, :order => "title ASC"
-  named_scope :recently_updated, :order => "updated_at DESC"
+  named_scope :active, lambda {
+    {:order => ["updated_at >= ?", 1.week.ago]}
+  }
 
   DISABLED_PROJECT_FORM_VALUE = -1
   def self.form_options
@@ -14,10 +16,6 @@ class Project < ActiveRecord::Base
      self.alphabetical.all.map{|p| [p.title, p.id]}
   end
   
-  def self.active(limit = 5)
-    self.recently_updated.first(limit)
-  end
-
   def self.create_new_untitled_project!
     self.create!(:title => self.next_available_project_title)
   end
