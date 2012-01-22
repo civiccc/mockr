@@ -1,0 +1,32 @@
+#mock_creation_form {
+  background: #111 url('../../images/upload-files-modal.png') no-repeat center;
+  display: none;
+  height: 400px;
+  left: 0;
+  opacity: .9;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+.submitted .progress-bar,
+.dragging #mock_creation_form {
+  display: block;
+}
+.progress-bar {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -180px;
+  margin-top: -13px;
+}
+.submitted * {
+  display: none;
+}
+.submitted#mock_creation_form {
+  background-image: none;
+}
+#mock_creation_form .instructions {
+  text-indent: -9999px;
+}

@@ -21,7 +21,7 @@ $(function() {
         }
     });
 
-    $("#add-next-version-link").click(function(e) {
+    $(".add_mock_link").click(function(e) {
       e.preventDefault();
       $(document.body).addClass("dragging");
     });

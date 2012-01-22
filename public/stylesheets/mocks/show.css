@@ -379,34 +379,7 @@ p.unread_notice a:hover {
   margin-left: 5px;
   padding-left: 15px;
 }
+
 #mock_creation_form {
-  background: #111 url('../../images/upload-next-version.png') no-repeat center;
-  display: none;
-  height: 400px;
-  opacity: .9;
-  position: absolute;
-  text-align: center;
-  top: 0;
-  width: 100%;
-}
-.submitted .progress-bar,
-.dragging #mock_creation_form {
-  display: block;
-}
-.progress-bar {
-  display: none;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -180px;
-  margin-top: -13px;
-}
-.submitted * {
-  display: none;
-}
-.submitted#mock_creation_form {
-  background-image: none;
-}
-#mock_creation_form .instructions {
-  text-indent: -9999px;
+  background-image: url('../../images/upload-next-version.png');
 }

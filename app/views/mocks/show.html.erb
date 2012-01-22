@@ -1,6 +1,6 @@
 <% @title = @mock.title %>
 <% content_for :head do %>
-  <%= stylesheet_link_tag "mocks/show" %>
+  <%= stylesheet_link_tag "shared/draggable_mock_creation", "mocks/show" %>
   <style type="text/css">
     <% Comment.feelings.each do |feeling| %>
       li.<%= feeling %> {
@@ -8,7 +8,7 @@
       }
     <% end %>
   </style>
-  <%= javascript_include_tag "mocks/show" %>
+  <%= javascript_include_tag "shared/draggable_mock_creation" %>
 <% end %>
 
 <%= render :partial => "mocks/new_award" %>  

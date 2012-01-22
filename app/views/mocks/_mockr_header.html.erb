@@ -24,8 +24,7 @@
     <li>
       <%= link_to "Add Next Version",
         new_mock_path(:mock_list_id => @mock.mock_list_id),
-        :class => "button",
-        :id => "add-next-version-link" %>
+        :class => "button add_mock_link" %>
     </li>
     <li>
       <%= link_to "Delete", mock_path, :method => :delete,

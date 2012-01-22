@@ -1,9 +1,10 @@
 <% @title = @project.title %>
 
 <% content_for :head do %>
-  <%= stylesheet_link_tag "shared/mock_grid", "projects/show" %>
-  <%= javascript_include_tag "plugins/jquery.inlineeditor.js",
+  <%= stylesheet_link_tag "shared/mock_grid", "shared/draggable_mock_creation",
     "projects/show" %>
+  <%= javascript_include_tag "plugins/jquery.inlineeditor.js",
+    "shared/draggable_mock_creation", "projects/show" %>
 <% end %>
 
 <div id="project_header">
@@ -66,8 +67,10 @@
         </li>
       <% end %>
     <% end %>
-    <li class="add_new_prompt">
+    <li class="add_new_prompt add_mock_link">
       <%= link_to "Add Mock", new_mock_path(:project_id => @project.id) %>
     </li>
   </ul>
 </div>
+
+<%= render :partial => "shared/new_mock_form" %>
