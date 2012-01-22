@@ -28,6 +28,11 @@ class Mock < ActiveRecord::Base
     mock.update_future_versions_of_destruction
   end
 
+  before_save do |mock|
+    project = mock.project
+    project.update_attribute(:updated_at, Time.now)
+  end
+
   def self.hosted_by_aws?
     File.exists?(AWS_W3_CONFIG_FILE)
   end
