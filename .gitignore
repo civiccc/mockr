@@ -5,3 +5,4 @@ db/schema.rb
 tmtags
 public/mocks
 bin/*
+db/*.sqlite3
