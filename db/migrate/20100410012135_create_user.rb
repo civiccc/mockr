@@ -9,13 +9,15 @@ class CreateUser < ActiveRecord::Migration
       t.timestamps
     end
 
-    case ActiveRecord::Base.connection.adapter_name
+    case adapter = ActiveRecord::Base.connection.adapter_name
       when "MySQL"
         execute("ALTER TABLE users MODIFY COLUMN facebook_uid bigint NOT NULL");
       when "PostgreSQL"
         execute("ALTER TABLE users ALTER COLUMN facebook_uid TYPE bigint")
+      when "SQLite"
+        nil
       else
-        raise "Don't know how to change column to bigint"
+        raise "Don't know how to change column to bigint for adapter #{adapter}"
     end
 
     add_index "users", "facebook_uid", :unique => true
