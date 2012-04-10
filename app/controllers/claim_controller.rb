@@ -4,7 +4,8 @@ class ClaimController < ApplicationController
 
   def index
     if Mockr.unclaimed? && viewer.authenticated?
-      owner = User.create(:facebook_uid => viewer.facebook_uid, :name => cookies["fbname"])
+      owner = User.create(:facebook_uid => viewer.facebook_uid,
+        :name => "Jacob")
       flash[:notice] = "Congratulations #{owner.first_name}, you're now the proud owner of this brand new instance of Mockr!"
       redirect_to root_path
     else
