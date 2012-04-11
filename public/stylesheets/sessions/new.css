@@ -23,7 +23,6 @@ td {
 }
 #left_col {
   background-color: #000;
-  background-image: url(../../images/home_background.png);
   border-right: 1px solid #303030;
 }
 #left_col img {
