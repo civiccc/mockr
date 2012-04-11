@@ -1,8 +1,9 @@
 source :gemcutter
-gem "rails", "~> 2.3.14"
+gem 'rails', '~> 2.3.14'
 
-gem 'aws-s3'
+gem 'aws-sdk'
 gem 'tinder'
+gem 'paperclip', '~> 2.7'
 
 group :development do
   gem 'sqlite3'
