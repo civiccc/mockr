@@ -5,8 +5,8 @@ class ClaimController < ApplicationController
 
   def index
     if Mockr.unclaimed? && viewer.authenticated?
-      graph_data = ActiveSupport::JSON.decode(
-        open("http://graph.facebook.com/#{viewer.facebook_uid}").read)
+      graph_data = ActiveSupport::JSON.decode(Net::HTTP.get(
+                     'graph.facebook.com', "/#{viewer.facebook_uid}"))
       owner = User.create(:facebook_uid => viewer.facebook_uid,
                           :name => graph_data['name'])
       flash[:notice] = <<-EOS.squish
