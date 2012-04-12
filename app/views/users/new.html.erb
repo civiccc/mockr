@@ -2,7 +2,7 @@
 
 <div class="form_holder debossed">
   <h1>Add a User</h1>
-  <% form_for :user, :url => users_path do |f| %>
+  <%= form_for :user, :url => users_path do |f| %>
     <%= f.hidden_field :active %>
     <div class="field_row">
       <%= f.label :name %><br />
@@ -20,5 +20,5 @@
       <%= link_to "Cancel", users_url %> or
       <%= f.submit "Create User" %>
     </div>
-  <% end %>
+  <%- end -%>
 </div>

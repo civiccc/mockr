@@ -4,8 +4,8 @@ class Project < ActiveRecord::Base
   validates_presence_of :title
   validates_uniqueness_of :title
 
-  named_scope :alphabetical, :order => "title ASC"
-  named_scope :active, lambda {
+  scope :alphabetical, :order => "title ASC"
+  scope :active, lambda {
     {:conditions => ["updated_at >= ?", 1.week.ago]}
   }
 

@@ -11,15 +11,15 @@ class Comment < ActiveRecord::Base
     :foreign_key => 'parent_id'
 
 
-  named_scope :about, lambda {|mock| {:conditions => {:mock_id => mock.id}}}
-  named_scope :by, lambda {|author| {:conditions => {:author_id => author.id}}}
-  named_scope :happy, :conditions => {:feeling => "happy"}
-  named_scope :in_reply_to, lambda {|parent_id|
+  scope :about, lambda {|mock| {:conditions => {:mock_id => mock.id}}}
+  scope :by, lambda {|author| {:conditions => {:author_id => author.id}}}
+  scope :happy, :conditions => {:feeling => "happy"}
+  scope :in_reply_to, lambda {|parent_id|
     {:conditions => {:parent_id => parent_id}}
   }
-  named_scope :recent, :order => "created_at DESC"
-  named_scope :sad, :conditions => {:feeling => "sad"}
-  named_scope :since, lambda {|time|
+  scope :recent, :order => "created_at DESC"
+  scope :sad, :conditions => {:feeling => "sad"}
+  scope :since, lambda {|time|
     {:conditions => ["created_at >= ?", time]}
   }
 

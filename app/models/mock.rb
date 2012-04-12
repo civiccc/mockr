@@ -6,9 +6,9 @@ class Mock < ActiveRecord::Base
 
   has_many :comments, :order => "created_at DESC"
 
-  named_scope :offset, lambda {|offset| {:offset => offset}}
-  named_scope :recent, lambda {|limit| {:order => "id DESC", :limit => limit}}
-  named_scope :with_author_and_project_data,
+  scope :offset, lambda {|offset| {:offset => offset}}
+  scope :recent, lambda {|limit| {:order => "id DESC", :limit => limit}}
+  scope :with_author_and_project_data,
               :include => [:author, {:mock_list => :project}]
 
   has_attached_file :image,

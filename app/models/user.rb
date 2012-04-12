@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
     :order      => "last_replied_at DESC",
     :class_name => "MockView"
 
-  named_scope :active, :conditions => {:active => true}
+  scope :active, :conditions => {:active => true}
 
   validates_uniqueness_of :facebook_uid
 
