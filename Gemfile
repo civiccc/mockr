@@ -9,6 +9,6 @@ group :production do
   gem 'pg'
 end
 
-gem 'aws-s3', :require => 'aws/s3'
+gem 'aws-sdk', :require => 'aws/s3'
 gem 'tinder'
 gem 'paperclip'
