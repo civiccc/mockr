@@ -3,11 +3,9 @@
   <% if local_assigns[:links] %>
     <ul class="clearfix">
       <% links.each do |name, url| %>
-        <% if current_page?(url) %>
-          <li><%= link_to name, url, :class => "current" %></li>
-        <% else %>
-          <li><%= link_to name, url %></li>
-        <% end %>
+        <li>
+          <%= link_to name, url, :class => ("current" if current_page?(url)) %>
+        </li>
       <% end %>
     </ul>
   <% end %>

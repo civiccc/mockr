@@ -1,6 +1,6 @@
-<% if !flash[:notice].blank? %>
+<% if flash[:notice].present? %>
   <div id="notice">
     <%= link_to "x", "#", :class => "hide_link" %>
-    <%= flash[:notice] %>
+    <%= raw(flash[:notice]) %>
   </div>
 <% end %>
