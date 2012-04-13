@@ -2,8 +2,8 @@ class Campfire
   KEYS = ["campfire_subdomain", "campfire_token", "campfire_room"]
 
   def self.notify_mocks_created(mocks, url)
-    room = find_room
-    if use? && room
+    if use?
+      room = find_room
       mock = mocks.first
       mocks_text = mocks.size == 1 ? "a new mock" : "#{mocks.size} new mocks"
       room.speak "#{mock.author.name} posted #{mocks_text}:"
@@ -11,7 +11,7 @@ class Campfire
       room.speak url
     end
   # Handle invalid token and invalid subdomain errors respectively.
-  rescue Tinder::AuthenticationFailed, NoMethodError                
+  rescue Tinder::AuthenticationFailed, NoMethodError
     # Do nothing.
   end
 
@@ -34,7 +34,7 @@ class Campfire
     end
     settings
   end
-  
+
   def self.use?
     !self.settings["campfire_subdomain"].blank?
   end
