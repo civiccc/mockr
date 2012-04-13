@@ -1,5 +1,5 @@
 class FacebookCookies
-  require 'lib/facebook_config'
+  require 'facebook_config'
 
   def initialize(cookies)
     @cookies = self.class.parse(cookies[self.class.fb_cookie_key])

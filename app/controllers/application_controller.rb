@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  require 'lib/authentication'
+  require 'authentication'
   include Authentication
   helper_method :viewer
 
