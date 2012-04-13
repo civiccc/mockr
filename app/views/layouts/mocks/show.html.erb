@@ -1,21 +1,20 @@
-<html xmlns="http://www.w3.org/1999/xhtml"  
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:fb="http://www.facebook.com/2008/fbml">
   <head>
     <title><%= @title || '' %> | Mockr</title>
     <link rel="shortcut icon" href="/images/feelings/happy.gif" />
-    <%= stylesheet_link_tag "base", "shared/progress",
-      "layouts/application" %>
+    <%= stylesheet_link_tag "base", "shared/progress", "layouts/application" %>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-  	</script>
+    <%= javascript_include_tag
+          "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" %>
     <%= javascript_include_tag "user",
                                "scrollto",
                                "plugins/jquery.form",
                                "plugins/jquery.cookie",
                                "plugins/jquery.shortkeys",
                                "plugins/jquery.ui.widget",
-    			          		   	   "plugins/jquery.iframe-transport",
-    						               "plugins/jquery.fileupload",
+                               "plugins/jquery.iframe-transport",
+                               "plugins/jquery.fileupload",
                                "mockr" %>
     <%= yield :head %>
   </head>

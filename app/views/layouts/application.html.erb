@@ -5,9 +5,9 @@
     <title><%= "#{@title} |" if @title %> Mockr</title>
     <link rel="shortcut icon" href="/images/feelings/happy.gif" />
     <%= stylesheet_link_tag "base", "shared/buttons", "shared/progress",
-      "layouts/application" %>
-  	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-  	</script>
+                            "layouts/application" %>
+    <%= javascript_include_tag
+          "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" %>
 
     <%= javascript_include_tag "user",
                                "scrollto",
@@ -15,8 +15,8 @@
                                "plugins/jquery.cookie",
                                "plugins/jquery.shortkeys",
                                "plugins/jquery.ui.widget",
-    			          		   	   "plugins/jquery.iframe-transport",
-    						               "plugins/jquery.fileupload",
+                               "plugins/jquery.iframe-transport",
+                               "plugins/jquery.fileupload",
                                "mockr" %>
     <%= yield :head %>
   </head>
@@ -33,9 +33,7 @@
         <div class="nav">
           <%= link_to "Home", home_path, :class => "home hoverable" %>
           <%= link_to "Settings", users_path, :class => "settings hoverable" %>
-          <% if viewer %>
-            <%= logout_link("Sign out") %>
-          <% end %>
+          <%= logout_link("Sign out") if viewer %>
         </div>
       </div>
     </div>
