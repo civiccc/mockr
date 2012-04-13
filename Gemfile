@@ -1,13 +1,14 @@
-source :gemcutter
-gem 'rails', '~> 2.3.14'
+source 'http://rubygems.org'
 
-gem 'aws-sdk'
-gem 'tinder'
-gem 'paperclip', '~> 2.7'
+gem 'rails', '3.0.12'
 
 group :development do
-  gem 'sqlite3'
+  gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 group :production do
   gem 'pg'
 end
+
+gem 'aws-s3', :require => 'aws/s3'
+gem 'tinder'
+gem 'paperclip'

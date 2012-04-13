@@ -6,3 +6,5 @@ tmtags
 public/mocks
 bin/*
 db/*.sqlite3
+.bundle/*
+tmp/*
