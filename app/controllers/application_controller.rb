@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
 
+  protect_from_forgery
+
+  require 'lib/authentication'
   include Authentication
   helper_method :viewer
 

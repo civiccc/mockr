@@ -1,4 +1,5 @@
 module Authentication
+  require 'lib/facebook_cookies'
 
   private # Should be included by controllers, inaccessible as :actions
 
