@@ -6,6 +6,7 @@ discussion on the topic.
 ## Setup - on Heroku
 Choose a mockr name -- the app will be at http://$mockrname.heroku.com/
 Accounts to set up:
+
 - Facebook (facebook.com/developers)
  - Sign up for an app and set your app domain to $mockrname.heroku.comA
  - You'll need your app_id and key (same) and secret key
@@ -14,6 +15,7 @@ Accounts to set up:
 - GMail account for notification emails (gmail.com)
  - You'll need your username and password (and domain if it's not @gmail.com)
 
+```bash
 git clone git@github.com:causes/mockr.git
 bundle install
 bundle exec rake db:migrate
@@ -30,10 +32,13 @@ heroku config:add \
   FB_KEY=000000000000000 \
   FB_SECRET=00000000000000000000000000000000
 git push heroku master
+```
 
 ## Setup - custom server
 Same steps as above except for the commands with heroku in them. To launch a
 local web server, you need to set the environment variables:
+
+```bash
 GMAIL_SMTP_USER='username' \
 GMAIL_SMTP_PASSWORD='password' \
 GMAIL_SMTP_DOMAIN='domain.com' \
@@ -44,3 +49,4 @@ FB_APP_ID=000000000000000 \
 FB_KEY=000000000000000 \
 FB_SECRET=00000000000000000000000000000000 \
   bundle exec rails server
+```
