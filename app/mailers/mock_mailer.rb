@@ -1,24 +1,18 @@
-class Notifier < ActionMailer::Base
-  helper ApplicationHelper
-
-  # TODO: fix this
-  REPLY_TO = "do-not-reply@causes.com"
+class MockMailer < ActionMailer::Base
+  default :from => "no-reply@#{ActionMailer::Base.smtp_settings[:domain]}"
 
   def new_comment(comment)
-    from REPLY_TO
-    reply_to REPLY_TO
     subject comment.mock.default_subject
     recipients comment.recipient_emails
     content_type "text/html"
-    body :comment => comment
-  end  
-  
+    @comment = comment
+    body
+  end
+
   def new_mock(mock, recipients = nil)
     host = self.class.default_url_options[:host]
 
-    from REPLY_TO
     recipients ||= Setting[:notification_email]
-    reply_to REPLY_TO
     subject mock.default_subject
     recipients recipients
     attachment :body => mock.attachment_body,
