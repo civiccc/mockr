@@ -13,25 +13,25 @@
            } %>
 
 <div id="tabbed_content">
-  <% form_tag update_campfire_settings_path, :method => :put,
+  <%= form_tag update_campfire_settings_path, :method => :put,
     :id => "campfire_form" do %>
     <div class="field_row">
       <%= label_tag "campfire_subdomain", "Subdomain:" %><br />
       <%= text_field_tag "campfire_subdomain",
         @campfire_settings["campfire_subdomain"] %>.campfirenow.com
     </div>
-    
+
     <div class="field_row">
       <%= label_tag "campfire_token", "Token:" %><br />
       <%= text_field_tag "campfire_token", @campfire_settings["campfire_token"]
       %>
     </div>
-    
+
     <div class="field_row">
       <%= label_tag "campfire_room", "Room Name:" %><br />
       <%= text_field_tag "campfire_room", @campfire_settings["campfire_room"] %>
     </div>
-      
+
     <div class="field_row">
       <%= submit_tag %>
     </div>

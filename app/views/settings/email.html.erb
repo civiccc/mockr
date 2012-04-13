@@ -13,7 +13,7 @@
            } %>
 
 <div id="tabbed_content">
-  <% form_for :setting, @setting, :url => setting_path(@setting),
+  <%= form_for :setting, @setting, :url => setting_path(@setting),
     :html => {:method => :put} do |f| %>
     <%= f.hidden_field :key %>
     <%= f.label :value, "Deliver group email notifications to:" %>

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  require 'lib/authentication'
+  require 'authentication'
   include Authentication
   helper_method :viewer
 
@@ -25,4 +25,10 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path(:next_url => request.path)
     end
   end
+
+  helper_method :unclaimed?
+  def unclaimed?
+    User.count == 0
+  end
+
 end

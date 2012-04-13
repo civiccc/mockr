@@ -3,7 +3,7 @@
     <%= format_text(child.text) %>
   </div>
   <div class="meta">
-    <%=h child.author.first_name %>,
+    <%= child.author.first_name %>,
     <span
       title="<%=
       child.created_at.strftime("%b %e, %l:%M%p").squish %>"><%=

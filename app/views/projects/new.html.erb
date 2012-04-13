@@ -7,7 +7,11 @@
     <div class="field_row">
       <%= f.label :title, "Name" %><br />
       <%= f.text_field :title %><br />
-      <%= f.error_message_on :title, "The project name " %>
+      <% if errors = @project.try(:errors) %>
+        <div class="formError">
+          <%= "Title #{errors[:title]}" if errors[:title] %>
+        </div>
+      <% end %>
       <%= f.submit "Create Project" %> or <%= link_to "Cancel", home_url %>
     </div>
   <%- end -%>

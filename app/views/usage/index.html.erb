@@ -6,14 +6,14 @@
   </tr>
   <% @users.each do |user| %>
     <tr>
-      <td><%=h user.name %></td>
-      <td><%=h user.mocks.count %></td>
-      <td><%=h user.comments.count %></td>
+      <td><%= user.name %></td>
+      <td><%= user.mocks.count %></td>
+      <td><%= user.comments.count %></td>
     </tr>
   <% end %>
   <tr>
-    <td><%=h User.count %></td>
-    <td><%=h Mock.count %></td>
-    <td><%=h Comment.count %></td>
+    <td><%= User.count %></td>
+    <td><%= Mock.count %></td>
+    <td><%= Comment.count %></td>
   </tr>
 </table>

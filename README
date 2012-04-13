@@ -1,9 +1,0 @@
-## Setup
-1) Copy bin-examples/ to bin/ and edit each file to contain your app's values.
-2) Install necessary gems using bundler.
-3) Setup db: rake db:create; rake db:migrate
-
-## Running mockr in dev
-Make sure you source ./bin/export-env-vars-for-dev to set up your environment
-variables before starting the app.
-  $ source ./bin/export-env-vars-for-dev

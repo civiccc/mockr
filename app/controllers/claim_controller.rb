@@ -1,10 +1,8 @@
-
 class ClaimController < ApplicationController
-
   skip_before_filter :require_authorization
 
   def index
-    if Mockr.unclaimed? && viewer.authenticated?
+    if unclaimed? && viewer.authenticated?
       graph_data = ActiveSupport::JSON.decode(Net::HTTP.get(
                      'graph.facebook.com', "/#{viewer.facebook_uid}"))
       owner = User.create(:facebook_uid => viewer.facebook_uid,
@@ -18,4 +16,5 @@ class ClaimController < ApplicationController
       redirect_to new_session_path
     end
   end
+
 end
