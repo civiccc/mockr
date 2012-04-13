@@ -18,7 +18,7 @@
                    :collection => Comment.basic_feelings,
                    :locals => {:f => f} %>
         <% if viewer.awards.any? %>
-          <li><%= link_to_function "More&hellip;",
+          <li><%= link_to_function raw("More&hellip;"),
             "$('#advanced_feelings').slideToggle();", :tabindex => -1 %></li>
         <% end %>
       </ul>
