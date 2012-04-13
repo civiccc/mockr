@@ -3,16 +3,14 @@
     in_groups_of(3, false) do |mocks| %>
   <ul class="mock_grid clearfix" id="mock_set_<%= page %>">
     <% mocks.each do |mock| %>
-      <li<%= ' class="fresh"' if mock.fresh?(viewer) %>>
+      <li<%= raw(' class="fresh"') if mock.fresh?(viewer) %>>
         <div class="preview_container">
-          <%= link_to image_tag(mock.image.url(:thumb)),
-            mock_path(mock) %>
+          <%= link_to image_tag(mock.image.url(:thumb)), mock_path(mock) %>
         </div>
         <div class="text">
           <%= link_to mock.title, mock_path(mock) %>
           <div class="meta">
-            in <%= link_to mock.project.title,
-                           project_path(mock.project) %>
+            in <%= link_to mock.project.title, project_path(mock.project) %>
           </div>
         </div>
       </li>
