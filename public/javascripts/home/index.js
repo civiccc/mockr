@@ -20,4 +20,16 @@ $(function() {
     $('.project_list.all').show();
     $('#show_all_projects').hide();
   });
+
+  $('.project_filter').keyup(function() {
+    var projects = $('.project_list li');
+    var filter = $.trim($(this).val());
+    projects.show();
+    if (filter) {
+      filter = new RegExp(filter ,'i');
+      projects
+        .filter(function() { return !filter.test($(this).text()); })
+        .hide();
+    };
+  });
 });

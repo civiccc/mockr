@@ -25,6 +25,24 @@ h2 {
   float: right;
   width: 230px;
 }
+#secondary_col .project_filter {
+  width: 214px;
+  padding: 6px 8px;
+  border-radius: 5px;
+  background-color: #2a2a2a;
+  border-color: #191919;
+}
+#secondary_col .project_filter:-moz-placeholder {
+  color: #666;
+}
+#secondary_col .project_filter::-webkit-input-placeholder {
+  color: #666;
+}
+#secondary_col .project_filter:focus {
+  color: #fff;
+  background-color: #555;
+  outline: none;
+}
 #secondary_col h2 {
   border-bottom: 1px solid #444;
   font-size: 13px;
