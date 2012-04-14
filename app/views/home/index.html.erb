@@ -2,6 +2,7 @@
 
 <%= stylesheet_link_tag "shared/mock_grid", "home" %>
 <%= javascript_include_tag "home/index" %>
+<%= javascript_include_tag "jquery-ujs-rails" %>
 
 <script type="text/javascript">
   var TOTAL_PAGES = <%= Mock.total_pages %>;
@@ -20,16 +21,32 @@
 <div id="secondary_col">
   <% if Project.active.any? %>
     <h2>Active Projects</h2>
-    <ul class="project_list">
+    <ul class="project_list active">
       <% Project.active.each do |project| %>
         <li><%= link_to project.title, project_path(project) %></li>
       <% end %>
     </ul>
   <% end %>
+
+  <% if Project.current.any? %>
+    <h2>Current Projects</h2>
+    <ul class="project_list current">
+      <% Project.current.all.each do |project| %>
+        <li>
+          <%= link_to raw("&times;"), archive_project_path(project),
+                :confirm => "Are you sure you want to archive this project?",
+                :method => :put, :class => "archive" %>
+          <%= link_to project.title, project_path(project) %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <% if Project.all.any? %>
     <h2>All Projects</h2>
-    <ul class="project_list">
-      <% Project.alphabetical.all.each do |project| %>
+    <a href="#" id="show_all_projects">Show All Projects &raquo;</a>
+    <ul class="project_list all">
+      <% Project.all.each do |project| %>
         <li><%= link_to project.title, project_path(project) %></li>
       <% end %>
     </ul>

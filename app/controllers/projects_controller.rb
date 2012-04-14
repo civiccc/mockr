@@ -26,11 +26,18 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
   end
-  
+
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
     flash[:notice] = "Project deleted."
+    redirect_to root_path
+  end
+
+  def archive
+    @project = Project.find(params[:id])
+    @project.update_attributes! :archived_at => Time.now
+    flash[:notice] = "Project archived"
     redirect_to root_path
   end
 end

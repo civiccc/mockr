@@ -36,5 +36,19 @@ h2 {
   margin-bottom: 32px;
 }
 #secondary_col .project_list li {
+  position: relative;
   padding-bottom: 8px;
+}
+#secondary_col .project_list.current li {
+  margin-left: -10px;
+}
+#secondary_col .project_list.all {
+  display: none;
+}
+#secondary_col .project_list.current .archive {
+  font-size: 14px;
+  visibility: hidden;
+}
+#secondary_col .project_list.current li:hover .archive {
+  visibility: visible;
 }

@@ -14,4 +14,10 @@ $(function() {
       pageToFetch++;
     });
   });
+
+  $('#show_all_projects').click(function(evt) {
+    evt.preventDefault();
+    $('.project_list.all').show();
+    $('#show_all_projects').hide();
+  });
 });
