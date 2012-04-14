@@ -1,3 +1,6 @@
+![Screenshot of Mockr](http://mockr-causes.heroku.com/images/mockr-screenshot.png)
+
+
 ## Introduction
 Mockr is a beautiful and fun app for managing mock-ups and images associated
 with a project. Mockr supports commenting on selections of the mock to enable a
