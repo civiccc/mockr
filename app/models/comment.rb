@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
 
-  MAX_COMMENT_LENGTH = 2_000 
+  MAX_COMMENT_LENGTH = 2_000
   belongs_to :author,
     :class_name => "User"
   belongs_to :mock, :touch => true
@@ -58,12 +58,9 @@ class Comment < ActiveRecord::Base
     end
   end
 
-  def box_attribute
-    if x && y && width && height
-      "box=\"#{x}_#{y}_#{width}_#{height}\""
-    else
-      ""
-    end
+  def box_coords
+    coords = [x, y, width, height]
+    coords if coords.all?
   end
 
   def self.basic_feelings

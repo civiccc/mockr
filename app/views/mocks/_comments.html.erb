@@ -4,7 +4,7 @@
   %>
     <li class="<%= comment.feeling %> <%= comment.fresh?(@last_viewed_at) ? "" : "read" %> comment_node clearfix"
         id="comment_<%= comment.id %>"
-        <%= comment.box_attribute %>>
+        box="<%= comment.box_coords.try(:join, '_') %>">
         <%= image_tag comment.author.facebook_photo_url, :class => :avatar %>
       <div>
         <div class="arrow"></div>
