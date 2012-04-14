@@ -1,6 +1,6 @@
 ## Introduction
-Mockr is a beautiful and fun app for managing mock-ups and images associate with
-a project. Mockr supports commenting on selections of the mock to enable a
+Mockr is a beautiful and fun app for managing mock-ups and images associated
+with a project. Mockr supports commenting on selections of the mock to enable a
 discussion on the topic.
 
 ## Setup - on Heroku
