@@ -4,10 +4,10 @@ class Award < ActiveRecord::Base
     total = author.comments.size
     if total % 8 == 0
       # Check available awards.
-      feelings = Comment.advanced_feelings - author.awarded_feelings 
+      feelings = Comment.advanced_feelings - author.awarded_feelings
       if feelings.any?
         # Pick a random award.
-        feeling = feelings.rand
+        feeling = feelings.shuffle.first
         # Grant it.
         self.create!(:feeling => feeling, :user_id => author.id)
         return feeling

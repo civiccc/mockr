@@ -1,55 +1,58 @@
 <ul id="comments_list">
   <%
-    @mock.filtered_comments(params[:feedback_filter], viewer).each do |comment| 
+    @mock.filtered_comments(params[:feedback_filter], viewer).each do |comment|
   %>
-    <li class="<%= comment.feeling %> <%= comment.fresh?(@last_viewed_at) ? "" : "read" %> comment_node"
+    <li class="<%= comment.feeling %> <%= comment.fresh?(@last_viewed_at) ? "" : "read" %> comment_node clearfix"
         id="comment_<%= comment.id %>"
         <%= comment.box_attribute %>>
-      <div class="arrow"></div>
-      <div class="parent_meta">
-        <% if comment.author_id == viewer.id %>
-          <%= link_to "Delete", comment_path(comment), :method => :delete,
-            :confirm =>
-              "Are you sure? Your comment and all replies will be permanently deleted." %> - 
-        <% end %>
-        <span class="time"
-          title="<%= comment.created_at.strftime("%b %e, %l:%M%p").squish %>">
-          <%= distance_of_time_in_words_to_now comment.created_at %> ago
-        </span>
-      </div>
-      <span class="author">
-        <%=h comment.author.first_name %>
-        <% unless comment.text.blank? %>
-          says<span class="multi-line">:</span><span class="single-line">, <span class="preview">&ldquo;<%= strip_tags(comment.text).first(30)
-          %>&rdquo;</span></span>
-        <% end %>
-      </span>
-      <div class="body">
-        <% unless comment.text.blank? %>
-          <div class="text"><%= format_text(comment.text) %></div>
-        <% end %>
-        <% if comment.children.any? %>
-          <ul id="children_comments_list">
-            <% comment.children.each do |child| %>
-              <%= render :partial => "child_comment", :locals => {:child => child}
-              %>
-            <% end %>
-          </ul>
-        <% end %>
-        <div class="reply_container">
-          <span class="fakelink replylink">Reply</span>
-        </div>
-        <div class="reply clearfix">
-          <% form_for :comment, Comment.new(:parent_id => comment.id,
-                                            :mock_id => @mock.id),
-                      :url => ajax_create_comments_path,
-                      :html => {:id => "reply_form_#{comment.id}", :method => :post} do |f| %>
-            <%= f.hidden_field :author_id, :value => viewer.id %>
-            <%= f.hidden_field :mock_id %>
-            <%= f.hidden_field :parent_id %>
-            <%= f.text_area :text %>
-            <%= image_submit_tag "buttons/add_feedback.gif" %>
+        <%= image_tag comment.author.facebook_photo_url, :class => :avatar %>
+      <div>
+        <div class="arrow"></div>
+        <div class="parent_meta">
+          <% if comment.author_id == viewer.id %>
+            <%= link_to "Delete", comment_path(comment), :method => :delete,
+              :confirm =>
+                "Are you sure? Your comment and all replies will be permanently deleted." %> -
           <% end %>
+          <span class="time"
+            title="<%= comment.created_at.strftime("%b %e, %l:%M%p").squish %>">
+            <%= distance_of_time_in_words_to_now comment.created_at %> ago
+          </span>
+        </div>
+        <span class="author">
+          <%=h comment.author.first_name %>
+          <% unless comment.text.blank? %>
+            says<span class="multi-line">:</span><span class="single-line">, <span class="preview">&ldquo;<%= strip_tags(comment.text).first(30)
+            %>&rdquo;</span></span>
+          <% end %>
+        </span>
+        <div class="body">
+          <% unless comment.text.blank? %>
+            <div class="text"><%= format_text(comment.text) %></div>
+          <% end %>
+          <% if comment.children.any? %>
+            <ul id="children_comments_list">
+              <% comment.children.each do |child| %>
+                <%= render :partial => "child_comment", :locals => {:child => child}
+                %>
+              <% end %>
+            </ul>
+          <% end %>
+          <div class="reply_container">
+            <span class="fakelink replylink">Reply</span>
+          </div>
+          <div class="reply clearfix">
+            <% form_for :comment, Comment.new(:parent_id => comment.id,
+                                              :mock_id => @mock.id),
+                        :url => ajax_create_comments_path,
+                        :html => {:id => "reply_form_#{comment.id}", :method => :post} do |f| %>
+              <%= f.hidden_field :author_id, :value => viewer.id %>
+              <%= f.hidden_field :mock_id %>
+              <%= f.hidden_field :parent_id %>
+              <%= f.text_area :text %>
+              <%= image_submit_tag "buttons/add_feedback.gif" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </li>

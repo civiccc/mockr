@@ -100,20 +100,19 @@ p.unread_notice a:hover {
 #children_comments_list li {
   background: #333;
   font-size: 11px;
-  margin: 0 22px 1px 0;
-  padding: 0 26px 0 10px;
+  margin: 0 0 1px 0;
+  padding: 8px;
 }
 #children_comments_list li .meta {
   color: #888;
   font-size: 10px;
-  padding: 0 0 5px;
 }
 #children_comments_list li.reply_item {
   padding: 4px 10px;
 }
 #children_comments_list li .text {
   margin: 0;
-  padding: 5px 0 4px;
+  padding: 0 0 4px;
 }
 #comments_list {
   color: #eee;
@@ -122,10 +121,10 @@ p.unread_notice a:hover {
   overflow: auto;
 }
 #comments_list > li {
-  background-position: 8px 9px;
+  background-position: 8px 16px;
   background-repeat: no-repeat;
   border-bottom: 1px solid #222;
-  padding: 12px 10px 12px 32px;
+  padding: 12px 10px 12px 35px;
 }
 #comments_list .arrow {
   float: right;
@@ -145,7 +144,7 @@ p.unread_notice a:hover {
 #comments_list .reply_container {
   background: #333;
   font-size: 10px;
-  margin: 0 22px 10px 0;
+  margin: 0 0 10px 0;
   padding: 4px 10px;
 }
 #comments_list .text {
@@ -159,7 +158,7 @@ p.unread_notice a:hover {
 }
 #comments_list .reply {
   display: none;
-  width: 336px;
+  width: 310px;
 }
 #comments_list .reply textarea {
   background: #444;
@@ -168,7 +167,7 @@ p.unread_notice a:hover {
   display: block;
   height: 60px;
   margin: 0 0 8px 0;
-  width: 100%;
+  width: 310px;
 }
 #comments_list .reply input[type=image] {
   float: right;
@@ -382,4 +381,22 @@ p.unread_notice a:hover {
 
 #mock_creation_form {
   background-image: url('../../images/upload-next-version.png');
+}
+.avatar {
+  width: 24px;
+  height: 24px;
+  float: left;
+  margin-right: 8px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+#comments_list > li > div {
+  float: left;
+  width: 310px;
+}
+#children_comments_list div {
+  float: left;
+  width: 242px;
 }

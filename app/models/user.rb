@@ -47,4 +47,8 @@ class User < ActiveRecord::Base
       c.parent_id || c.id
     end
   end
+
+  def facebook_photo_url(opts={})
+    "//graph.facebook.com/#{self.facebook_uid}/picture?type=#{opts[:size] || 'square'}"
+  end
 end
