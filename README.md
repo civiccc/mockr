@@ -6,6 +6,15 @@ Mockr is a beautiful and fun app for managing mock-ups and images associated
 with a project. Mockr supports commenting on selections of the mock to enable a
 discussion on the topic.
 
+
+## Try it out!
+We've got a demo sandbox up at:
+[http://mockr-demo.heroku.com/]
+
+The only difference between this sandbox and a "real" instance is that we allow
+any Facebook account to login, as opposed to a whitelist of users.
+
+
 ## Setup - on Heroku
 Choose a mockr name -- the app will be at http://$mockrname.heroku.com/
 
