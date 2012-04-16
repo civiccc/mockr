@@ -11,14 +11,6 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :facebook_uid
 
-  def self.activate!(facebook_uid, name)
-    user = User.find_or_initialize_by_facebook_uid(facebook_uid)
-    user.name = name
-    user.active = true
-    user.save
-    user
-  end
-
   def first_name
     name.to_s.split.first.to_s
   end
