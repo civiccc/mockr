@@ -8,11 +8,9 @@ discussion on the topic.
 
 
 ## Try it out!
-We've got a demo sandbox up at:
-[http://mockr-demo.heroku.com/]
-
-The only difference between this sandbox and a "real" instance is that we allow
-any Facebook account to login, as opposed to a whitelist of users.
+We've got a demo sandbox up at http://mockr-demo.heroku.com/ The only difference
+between this sandbox and a "real" instance is that we allow any Facebook account
+to login, as opposed to a whitelist of users.
 
 
 ## Setup - on Heroku
