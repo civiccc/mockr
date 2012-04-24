@@ -1,7 +1,7 @@
 class MockMailer < ActionMailer::Base
-  default :from => "no-reply@#{ActionMailer::Base.smtp_settings[:domain]}"
 
   def new_comment(comment)
+    from "no-reply@#{ActionMailer::Base.smtp_settings[:domain]}"
     subject comment.mock.default_subject
     recipients comment.recipient_emails
     content_type "text/html"
@@ -10,6 +10,7 @@ class MockMailer < ActionMailer::Base
   end
 
   def new_mock(mock, recipients = nil)
+    from "no-reply@#{ActionMailer::Base.smtp_settings[:domain]}"
     host = self.class.default_url_options[:host]
 
     recipients ||= Setting[:notification_email]

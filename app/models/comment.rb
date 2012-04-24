@@ -49,12 +49,7 @@ class Comment < ActiveRecord::Base
       discussion.save!
     end
     if comment.recipient_emails.any?
-      begin
-        Notifier.deliver_new_comment(comment)
-      rescue Exception => e
-        # TODO: hook up hoptoad and fix it
-        # Not sure why this happens.
-      end
+      MockMailer.new_comment(comment).deliver
     end
   end
 
