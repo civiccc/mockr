@@ -130,10 +130,6 @@ class Mock < ActiveRecord::Base
     end
   end
 
-  def deliver(email)
-    Notifier.deliver_new_mock(self, email)
-  end
-
   # TODO [chris]: Does acts_as_list cover this?
   def update_future_versions_of_destruction
     conditions =
