@@ -23,11 +23,13 @@ h2 {
 }
 #secondary_col {
   float: right;
+  font-size: 12px;
   width: 230px;
 }
 #secondary_col .project_filter {
   width: 214px;
   padding: 6px 8px;
+  margin-bottom: 30px;
   border-radius: 5px;
   background-color: #2a2a2a;
   border-color: #191919;
@@ -58,9 +60,12 @@ h2 {
   padding-bottom: 8px;
 }
 #secondary_col .project_list.current li {
-  margin-left: -10px;
+  margin-left: -14px;
 }
-#secondary_col .project_list.all {
+#secondary_col .project_list.current li a {
+  margin-left: 2px;
+}
+#secondary_col #all_projects {
   display: none;
 }
 #secondary_col .project_list.current .archive {

@@ -19,8 +19,7 @@
 </div>
 
 <div id="secondary_col">
-  <input type="text" class="project_filter" placeholder="Find Project"/>
-  <br/><br/>
+  <input type="text" class="project_filter" placeholder="Find Project" />
   <% if Project.active.any? %>
     <h2>Active Projects</h2>
     <ul class="project_list active">
@@ -45,12 +44,14 @@
   <% end %>
 
   <% if Project.all.any? %>
-    <h2>All Projects</h2>
-    <a href="#" id="show_all_projects">Show All Projects &raquo;</a>
-    <ul class="project_list all">
-      <% Project.all.each do |project| %>
-        <li><%= link_to project.title, project_path(project) %></li>
-      <% end %>
-    </ul>
+    <a href="#" id="show_all_projects">Show All Projects</a>
+    <div id="all_projects">
+      <h2>All Projects</h2>
+      <ul class="project_list all">
+        <% Project.all.each do |project| %>
+          <li><%= link_to project.title, project_path(project) %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 </div>

@@ -8,7 +8,7 @@ $(function() {
       if (data.trim().length > 0) {
         $(data).insertBefore('.more');
       }
-      if (pageToFetch == TOTAL_PAGES) {
+      if (pageToFetch === TOTAL_PAGES) {
         $(".more").hide();
       }
       pageToFetch++;
@@ -17,7 +17,7 @@ $(function() {
 
   $('#show_all_projects').click(function(evt) {
     evt.preventDefault();
-    $('.project_list.all').show();
+    $('#all_projects').show();
     $('#show_all_projects').hide();
   });
 
@@ -30,6 +30,6 @@ $(function() {
       projects
         .filter(function() { return !filter.test($(this).text()); })
         .hide();
-    };
+    }
   });
 });
