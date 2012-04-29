@@ -8,8 +8,8 @@ class Comment < ActiveRecord::Base
     :class_name => 'Comment'
   has_many :children,
     :class_name => 'Comment',
-    :foreign_key => 'parent_id'
-
+    :foreign_key => 'parent_id',
+    :order => 'id ASC'
 
   scope :about, lambda {|mock| {:conditions => {:mock_id => mock.id}}}
   scope :by, lambda {|author| {:conditions => {:author_id => author.id}}}
