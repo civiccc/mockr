@@ -1,6 +1,10 @@
 <div id="fb-root"></div>
 <script src='/javascripts/jquery.cookie.js'></script>
 <script>
+  var setLocationToHome = function(response) {
+    window.location = '/';
+  };
+
   window.fbAsyncInit = function() {
     FB.init({
       appId: "<%= FacebookConfig.app_id %>",
@@ -9,9 +13,8 @@
       xfbml: true
     });
 
-    FB.Event.subscribe('auth.authResponseChange', function(response) {
-      window.location.reload();
-    });
+    FB.Event.subscribe('auth.login', setLocationToHome);
+    FB.Event.subscribe('auth.logout', setLocationToHome);
   };
 
   (function() {
