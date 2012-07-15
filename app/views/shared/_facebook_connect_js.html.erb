@@ -1,8 +1,8 @@
 <div id="fb-root"></div>
 <script src='/javascripts/jquery.cookie.js'></script>
 <script>
-  var setLocationToHome = function(response) {
-    window.location = '/';
+  var redirectUser = function(response) {
+    window.location = '<%= escape_javascript(params[:next_url] || '/') %>';
   };
 
   window.fbAsyncInit = function() {
@@ -13,8 +13,8 @@
       xfbml: true
     });
 
-    FB.Event.subscribe('auth.login', setLocationToHome);
-    FB.Event.subscribe('auth.logout', setLocationToHome);
+    FB.Event.subscribe('auth.login', redirectUser);
+    FB.Event.subscribe('auth.logout', redirectUser);
   };
 
   (function() {
