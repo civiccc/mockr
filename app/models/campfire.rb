@@ -6,9 +6,8 @@ class Campfire
       room = find_room
       mock = mocks.first
       mocks_text = mocks.size == 1 ? "a new mock" : "#{mocks.size} new mocks"
-      room.speak "#{mock.author.name} posted #{mocks_text}:"
+      room.speak "#{mock.author.name} posted #{mocks_text} (#{url})"
       room.speak mock.image.url
-      room.speak url
     end
   # Handle invalid token and invalid subdomain errors respectively.
   rescue Tinder::AuthenticationFailed, NoMethodError
