@@ -1,5 +1,6 @@
 $(function() {
   var pageToFetch = 2;
+  var prevQueryLength = 0;
   var user_id = undefined;
 
   $(".more").click(function() {
@@ -24,15 +25,27 @@ $(function() {
   });
 
   $('.project_filter').keyup(function() {
-    var projects = $('.project_list li');
+    var $projects = $('.project_list li');
     var filter = $.trim($(this).val());
-    projects.show();
+
     if (filter) {
-      filter = new RegExp(filter ,'i');
-      projects
-        .filter(function() { return !filter.test($(this).text()); })
+      filterRegexp = new RegExp(filter ,'i');
+      $projects
+        .filter(':visible')
+        .filter(function() { return !filterRegexp.test(this.textContent); })
         .hide();
+
+      if (filter.length <= prevQueryLength) {
+        $projects
+          .filter(':hidden')
+          .filter(function() { return filterRegexp.test(this.textContent); })
+          .show();
+      }
+    } else {
+      $projects.show();
     }
+
+    prevQueryLength = filter.length;
   });
 
   $('.author_link').click(function() {
