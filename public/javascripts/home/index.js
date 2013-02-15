@@ -1,16 +1,18 @@
 $(function() {
   var pageToFetch = 2;
+  var user_id = undefined;
 
   $(".more").click(function() {
     $(this).addClass("loading");
     $.get("/home/mock_set", {page: pageToFetch}, function(data) {
       $(".more").removeClass("loading");
       if (data.trim().length > 0) {
-        $(data).insertBefore('.more');
+        $("#mock_set").append(data);
       }
       if (pageToFetch === TOTAL_PAGES) {
         $(".more").hide();
       }
+      filter_users();
       pageToFetch++;
     });
   });
@@ -32,4 +34,22 @@ $(function() {
         .hide();
     }
   });
+
+  $('.author_link').click(function() {
+    user_id = $(this).attr("data-author");
+    filter_users();
+    $('.author_link').attr("data-selected", false);
+    $(this).attr('data-selected', true);
+    return false;
+  });
+
+  filter_users = function(){
+    if (user_id) {
+      $('.mock_grid li').hide();
+      $('.mock_grid li[data-author=' + user_id + ']').show();
+    } else {
+      $('.mock_grid li').show();
+    }
+  }
+
 });

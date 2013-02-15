@@ -55,6 +55,17 @@ h2 {
   font-size: 12px;
   margin-bottom: 32px;
 }
+#secondary_col #author_filter li {
+  position: relative;
+  padding-bottom: 8px;
+}
+#secondary_col #author_filter {
+  font-size: 12px;
+  margin-bottom: 32px;
+}
+.author_link[data-selected=true] {
+  color: yellow;
+}
 #secondary_col .project_list li {
   position: relative;
   padding-bottom: 8px;
