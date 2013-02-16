@@ -2,7 +2,6 @@
 
 <%= stylesheet_link_tag "shared/mock_grid", "home" %>
 <%= javascript_include_tag "home/index" %>
-<%= javascript_include_tag "jquery-ujs-rails" %>
 
 <script type="text/javascript">
   var TOTAL_PAGES = <%= Mock.total_pages %>;
@@ -11,9 +10,11 @@
 <div id="primary_col">
   <div id="recent_mocks">
     <h2>Recent Mocks</h2>
+    <ul class="mock_grid clearfix" id="mock_set">
       <%= render :partial => "recent_mock_set", :locals => {:page => 1} %>
-      <% if Mock.count > Mock::DISPLAY_LIMIT %>
-        <%= link_to_function "More", '', :class => "more rounded" %>
+    </ul>
+    <% if Mock.count > Mock::DISPLAY_LIMIT %>
+      <%= link_to_function "More", '', :class => "more rounded" %>
       <% end %>
   </div>
 </div>
@@ -28,6 +29,18 @@
       <% end %>
     </ul>
   <% end %>
+
+  <h2>Designers</h2>
+  <ul id="author_filter">
+    <% User.active.designers.each do |user| %>
+      <li>
+      <%= link_to user.name, "#", :class => "author_link", 
+        :"data-author" => user.id, :"data-selected" => false %>
+      </li>
+    <% end %>
+    <%= link_to "Show all", "#", :class => "author_link", :"data-author" => nil,
+      :"data-selected" => true%>
+  </ul>
 
   <% if Project.current.any? %>
     <h2>Current Projects</h2>

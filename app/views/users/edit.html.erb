@@ -12,6 +12,10 @@
       <%= f.label :email %><br />
       <%= f.text_field :email %>
     </div>
+    <div class="field_row">
+      <%= f.label :designer %><br />
+      <%= f.check_box :designer %>
+    </div>
     <div class="submit_bar">
       <%= link_to "Cancel", users_url %> or
       <%= f.submit "Save" %>

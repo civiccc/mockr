@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     :class_name => "MockView"
 
   scope :active, :conditions => {:active => true}
+  scope :designers, :conditions => {:designer => true}
 
   validates_uniqueness_of :facebook_uid
 
