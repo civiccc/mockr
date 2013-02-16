@@ -9,8 +9,12 @@
 </script>
 
 <div id="primary_col">
-  <div id="recent_mocks">
-    <h2>Recent Mocks</h2>
+  <div id="recently_viewed">
+    <h2>Recently Viewed</h2>
+    <%= render :partial => "recently_viewed", :locals => {:page => 1, :mocks => @recent} %>
+  </div>
+  <div id="new_mocks">
+    <h2>New Mocks</h2>
     <ul class="mock_grid clearfix" id="mock_set">
       <%= render :partial => "recent_mock_set", :locals => {:page => 1} %>
     </ul>

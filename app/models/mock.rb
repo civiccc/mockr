@@ -5,6 +5,7 @@ class Mock < ActiveRecord::Base
   belongs_to :mock_list
 
   has_many :comments, :order => "created_at DESC"
+  has_many :mock_views
 
   scope :offset, lambda {|offset| {:offset => offset}}
   scope :recent, lambda {|limit| {:order => "id DESC", :limit => limit}}
