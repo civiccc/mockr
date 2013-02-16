@@ -5,7 +5,7 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :title
 
   scope :active, lambda {
-    {:conditions => ["updated_at >= ?", 1.week.ago]}
+    {:conditions => ["updated_at >= ? AND archived_at is NULL", 1.week.ago]}
   }
   scope :current, where(:archived_at => nil).order("title ASC")
 
