@@ -39,12 +39,11 @@
   <ul id="author_filter">
     <% User.active.designers.each do |user| %>
       <li>
-      <%= link_to user.name, "#", :class => "author_link", 
-        :"data-author" => user.id, :"data-selected" => false %>
+      <%= link_to user.name, '#', :class => 'author_link',
+        :'data-author' => user.id %>
       </li>
     <% end %>
-    <%= link_to "Show all", "#", :class => "author_link", :"data-author" => nil,
-      :"data-selected" => true%>
+    <%= link_to 'Show all', '#', :class => 'author_link selected' %>
   </ul>
 
   <% if Project.current.any? %>

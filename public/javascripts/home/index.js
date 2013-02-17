@@ -1,7 +1,7 @@
 $(function() {
-  var pageToFetch = 2;
-  var prevQueryLength = 0;
-  var user_id = undefined;
+  var pageToFetch = 2,
+      prevQueryLength = 0,
+      userId;
 
   $(".more").click(function() {
     $(this).addClass("loading");
@@ -48,18 +48,23 @@ $(function() {
     prevQueryLength = filter.length;
   });
 
-  $('.author_link').click(function() {
-    user_id = $(this).attr("data-author");
-    filter_users();
-    $('.author_link').attr("data-selected", false);
-    $(this).attr('data-selected', true);
-    return false;
+  $('.author_link').click(function(e) {
+    e.preventDefault();
+    var $this = $(this);
+
+    userId = $this.data('author');
+    filterUsers();
+
+    $('.author_link').removeClass('selected');
+    $this.addClass('selected');
   });
 
-  filter_users = function(){
-    if (user_id) {
-      $('.mock_grid li').hide();
-      $('.mock_grid li[data-author=' + user_id + ']').show();
+  var filterUsers = function() {
+    if (userId) {
+      $('.mock_grid li')
+        .hide()
+        .filter('[data-author=' + userId + ']')
+        .show();
     } else {
       $('.mock_grid li').show();
     }
