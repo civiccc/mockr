@@ -1,4 +1,9 @@
 class MockListsController < ApplicationController
+  def latest
+    @mock_list = MockList.find(params[:id])
+    redirect_to mock_path(@mock_list.mocks.last)
+  end
+
   def update
     @mock_list = MockList.find(params[:id])
     @mock_list.update_attributes(params[:mock_list])
